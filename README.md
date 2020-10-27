@@ -8,4 +8,4 @@ This app is implemented using:
 * Angular for the front-end / the client / the UI ([at TrakGudUI repo](https://github.com/navedrasul/TrakGudUI)).
 * PostgreSQL for the database.
 
-Further info will be available gradually as the project progresses.
+> Further info will be available gradually as the project progresses.
