@@ -8,7 +8,7 @@ namespace TrakGud.DAL.Models.FinanceManagement
 	{
 		public float receivedAmt { get; set; }
 
-		public CashPayment(int id_, string type_, float receivedAmt_): base(id_, type_)
+		public CashPayment(float receivedAmt_, int id_, string type_): base(id_, type_)
 		{
 			this.receivedAmt = receivedAmt_;
 		}

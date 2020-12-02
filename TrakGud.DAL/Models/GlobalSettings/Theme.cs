@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TrakGud.DAL.Models.Global Settings
+namespace TrakGud.DAL.Models.GlobalSettings
 {
 	public class Theme
 	{

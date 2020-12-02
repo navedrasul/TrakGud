@@ -8,7 +8,7 @@ namespace TrakGud.DAL.Models.ContactManagement
 	{
 		public string email { get; set; }
 
-		public Email(int id_, string fieldType_, int? contactId_ = default, string name_ = default, string email_): base(id_, fieldType_, contactId_, name_)
+		public Email(string email_, int id_, string fieldType_, int? contactId_ = default, string name_ = default): base(id_, fieldType_, contactId_, name_)
 		{
 			this.email = email_;
 		}

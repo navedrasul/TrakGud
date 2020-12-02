@@ -9,7 +9,7 @@ namespace TrakGud.DAL.Models.FinanceManagement
 		public bool? isBounced { get; set; }
 		public int chequeId { get; set; }
 
-		public ChequePayment(int id_, string type_, bool? isBounced_ = default, int chequeId_): base(id_, type_)
+		public ChequePayment(int chequeId_, int id_, string type_, bool? isBounced_ = default): base(id_, type_)
 		{
 			this.isBounced = isBounced_;
 			this.chequeId = chequeId_;
