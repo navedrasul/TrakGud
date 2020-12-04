@@ -10,7 +10,7 @@ namespace TrakGud.DAL.Models.ShipmentManagement
 		public float? receivedQty { get; set; }
 		public int? receivedUnitId { get; set; }
 
-		public DestinationItemBatch(int id_, string itemBatchType_, int productId_, DateTime addTS_, int adderId_, string sourceType_ = default, int? sourceId_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default, float? receivedQty_ = default, int? receivedUnitId_ = default): base(id_, itemBatchType_, productId_, addTS_, adderId_, sourceType_, sourceId_, modderId_, isRemoved_, modTS_)
+		public DestinationItemBatch(int id_, string itemBatchType_, int productId_, DateTime addTS_, int adderId_, float? receivedQty_ = default, int? receivedUnitId_ = default, string sourceType_ = default, int? sourceId_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default): base(id_, itemBatchType_, productId_, addTS_, adderId_, sourceType_, sourceId_, modderId_, isRemoved_, modTS_)
 		{
 			this.receivedQty = receivedQty_;
 			this.receivedUnitId = receivedUnitId_;
