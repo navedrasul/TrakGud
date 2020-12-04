@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using TrakGud.DAL.Models.Domain;
 
 namespace TrakGud.DAL.Models.ShipmentManagement
 {
-	public class MovingItemBatch: ItemBatch
+[Table("sm__MovingItemBatch")]	public class MovingItemBatch: ItemBatch
 	{
 		public int shipmentId { get; set; }
 
-		public MovingItemBatch(int shipmentId_, int id_, string itemBatchType_, int productId_, DateTime addTS_, int adderId_, string sourceType_ = default, int? sourceId_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default): base(id_, itemBatchType_, productId_, addTS_, adderId_, sourceType_, sourceId_, modderId_, isRemoved_, modTS_)
+		public MovingItemBatch() { }
+
+
+		public MovingItemBatch(int shipmentId, int id, string itemBatchType, int productId, DateTime addTS, int adderId, string sourceType = default, int? sourceId = default, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default): base(id, itemBatchType, productId, addTS, adderId, sourceType, sourceId, modderId, isRemoved, modTS)
 		{
-			this.shipmentId = shipmentId_;
+			this.shipmentId = shipmentId;
 		}
 	}
 }

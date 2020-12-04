@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.Domain
 {
-	public class ProductWarehouseStock
+[Table("d__ProductWarehouseStock")]	public class ProductWarehouseStock
 	{
 		public int id { get; set; }
 		public int warehouseId { get; set; }
@@ -12,12 +13,15 @@ namespace TrakGud.DAL.Models.Domain
 		public float? qty { get; set; }
 		public int? unitId { get; set; }
 
-		public ProductWarehouseStock(int id_, int warehouseId_, int productId_, float? qty_ = default, int? unitId_ = default)		{
-			this.id = id_;
-			this.warehouseId = warehouseId_;
-			this.productId = productId_;
-			this.qty = qty_;
-			this.unitId = unitId_;
+		public ProductWarehouseStock() { }
+
+
+		public ProductWarehouseStock(int id, int warehouseId, int productId, float? qty = default, int? unitId = default)		{
+			this.id = id;
+			this.warehouseId = warehouseId;
+			this.productId = productId;
+			this.qty = qty;
+			this.unitId = unitId;
 		}
 	}
 }

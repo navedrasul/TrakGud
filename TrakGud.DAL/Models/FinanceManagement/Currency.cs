@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FinanceManagement
 {
-	public class Currency
+[Table("fim__Currency")]	public class Currency
 	{
 		public string value { get; set; }
 		public string text { get; set; }
 
-		public Currency(string value_, string text_)		{
-			this.value = value_;
-			this.text = text_;
+		public Currency() { }
+
+
+		public Currency(string value, string text)		{
+			this.value = value;
+			this.text = text;
 		}
 	}
 }

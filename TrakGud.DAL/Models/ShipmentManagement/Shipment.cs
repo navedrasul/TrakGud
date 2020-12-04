@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.ShipmentManagement
 {
-	public class Shipment
+[Table("sm__Shipment")]	public class Shipment
 	{
 		public int id { get; set; }
 		public int sourceId { get; set; }
@@ -17,21 +18,24 @@ namespace TrakGud.DAL.Models.ShipmentManagement
 		public bool? isShipmentComplete { get; set; }
 		public int? modderId { get; set; }
 		public bool? isRemoved { get; set; }
-		public DateTime modTS { get; set; }
+		public DateTime? modTS { get; set; }
 
-		public Shipment(int id_, int sourceId_, int destinationId_, int sourceItemBatchId_, int destinationItemBatchId_, int suppervisorId_, DateTime addTS_, int adderId_, bool? isShipmentComplete_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default)		{
-			this.id = id_;
-			this.sourceId = sourceId_;
-			this.destinationId = destinationId_;
-			this.sourceItemBatchId = sourceItemBatchId_;
-			this.destinationItemBatchId = destinationItemBatchId_;
-			this.suppervisorId = suppervisorId_;
-			this.addTS = addTS_;
-			this.adderId = adderId_;
-			this.isShipmentComplete = isShipmentComplete_;
-			this.modderId = modderId_;
-			this.isRemoved = isRemoved_;
-			this.modTS = modTS_;
+		public Shipment() { }
+
+
+		public Shipment(int id, int sourceId, int destinationId, int sourceItemBatchId, int destinationItemBatchId, int suppervisorId, DateTime addTS, int adderId, bool? isShipmentComplete = default, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default)		{
+			this.id = id;
+			this.sourceId = sourceId;
+			this.destinationId = destinationId;
+			this.sourceItemBatchId = sourceItemBatchId;
+			this.destinationItemBatchId = destinationItemBatchId;
+			this.suppervisorId = suppervisorId;
+			this.addTS = addTS;
+			this.adderId = adderId;
+			this.isShipmentComplete = isShipmentComplete;
+			this.modderId = modderId;
+			this.isRemoved = isRemoved;
+			this.modTS = modTS;
 		}
 	}
 }

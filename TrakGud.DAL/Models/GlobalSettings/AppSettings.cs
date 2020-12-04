@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.GlobalSettings
 {
-	public class AppSettings
+[Table("gs__AppSettings")]	public class AppSettings
 	{
 		public int? defaultCurrencyId { get; set; }
 		public string companyName { get; set; }
 
-		public AppSettings(int? defaultCurrencyId_ = default, string companyName_ = default)		{
-			this.defaultCurrencyId = defaultCurrencyId_;
-			this.companyName = companyName_;
+		public AppSettings() { }
+
+
+		public AppSettings(int? defaultCurrencyId = default, string companyName = default)		{
+			this.defaultCurrencyId = defaultCurrencyId;
+			this.companyName = companyName;
 		}
 	}
 }

@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.ContactManagement
 {
-	public class ContactMerger
+[Table("cm__ContactMerger")]	public class ContactMerger
 	{
 		public int mainContactId { get; set; }
 		public int mergedContactId { get; set; }
@@ -12,16 +13,19 @@ namespace TrakGud.DAL.Models.ContactManagement
 		public int adderId { get; set; }
 		public int? modderId { get; set; }
 		public bool? isRemoved { get; set; }
-		public DateTime modTS { get; set; }
+		public DateTime? modTS { get; set; }
 
-		public ContactMerger(int mainContactId_, int mergedContactId_, DateTime addTS_, int adderId_, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default)		{
-			this.mainContactId = mainContactId_;
-			this.mergedContactId = mergedContactId_;
-			this.addTS = addTS_;
-			this.adderId = adderId_;
-			this.modderId = modderId_;
-			this.isRemoved = isRemoved_;
-			this.modTS = modTS_;
+		public ContactMerger() { }
+
+
+		public ContactMerger(int mainContactId, int mergedContactId, DateTime addTS, int adderId, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default)		{
+			this.mainContactId = mainContactId;
+			this.mergedContactId = mergedContactId;
+			this.addTS = addTS;
+			this.adderId = adderId;
+			this.modderId = modderId;
+			this.isRemoved = isRemoved;
+			this.modTS = modTS;
 		}
 	}
 }

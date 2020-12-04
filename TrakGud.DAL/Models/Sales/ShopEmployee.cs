@@ -1,19 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.Sales
 {
-	public class ShopEmployee
+[Table("s__ShopEmployee")]	public class ShopEmployee
 	{
 		public int id { get; set; }
 		public string designationId { get; set; }
 		public int employeeId { get; set; }
 
-		public ShopEmployee(int id_, string designationId_, int employeeId_)		{
-			this.id = id_;
-			this.designationId = designationId_;
-			this.employeeId = employeeId_;
+		public ShopEmployee() { }
+
+
+		public ShopEmployee(int id, string designationId, int employeeId)		{
+			this.id = id;
+			this.designationId = designationId;
+			this.employeeId = employeeId;
 		}
 	}
 }

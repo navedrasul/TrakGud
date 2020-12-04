@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.Domain
 {
-	public class Product
+[Table("d__Product")]	public class Product
 	{
 		public int id { get; set; }
 		public string name { get; set; }
@@ -15,19 +16,22 @@ namespace TrakGud.DAL.Models.Domain
 		public string barCode { get; set; }
 		public int? modderId { get; set; }
 		public bool? isRemoved { get; set; }
-		public DateTime modTS { get; set; }
+		public DateTime? modTS { get; set; }
 
-		public Product(int id_, string name_, DateTime addTS_, int adderId_, string desc_ = default, int? productCategoryId_ = default, string barCode_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default)		{
-			this.id = id_;
-			this.name = name_;
-			this.addTS = addTS_;
-			this.adderId = adderId_;
-			this.desc = desc_;
-			this.productCategoryId = productCategoryId_;
-			this.barCode = barCode_;
-			this.modderId = modderId_;
-			this.isRemoved = isRemoved_;
-			this.modTS = modTS_;
+		public Product() { }
+
+
+		public Product(int id, string name, DateTime addTS, int adderId, string desc = default, int? productCategoryId = default, string barCode = default, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default)		{
+			this.id = id;
+			this.name = name;
+			this.addTS = addTS;
+			this.adderId = adderId;
+			this.desc = desc;
+			this.productCategoryId = productCategoryId;
+			this.barCode = barCode;
+			this.modderId = modderId;
+			this.isRemoved = isRemoved;
+			this.modTS = modTS;
 		}
 	}
 }

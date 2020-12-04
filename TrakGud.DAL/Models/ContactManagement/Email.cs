@@ -1,16 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.ContactManagement
 {
-	public class Email: ContactField
+[Table("cm__Email")]	public class Email: ContactField
 	{
 		public string email { get; set; }
 
-		public Email(string email_, int id_, string fieldType_, int? contactId_ = default, string name_ = default): base(id_, fieldType_, contactId_, name_)
+		public Email() { }
+
+
+		public Email(string email, int id, string fieldType, int? contactId = default, string name = default): base(id, fieldType, contactId, name)
 		{
-			this.email = email_;
+			this.email = email;
 		}
 	}
 }

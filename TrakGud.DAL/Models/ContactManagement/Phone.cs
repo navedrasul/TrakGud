@@ -1,18 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.ContactManagement
 {
-	public class Phone: ContactField
+[Table("cm__Phone")]	public class Phone: ContactField
 	{
 		public int cityId { get; set; }
 		public string phone { get; set; }
 
-		public Phone(int cityId_, int id_, string fieldType_, string phone_ = default, int? contactId_ = default, string name_ = default): base(id_, fieldType_, contactId_, name_)
+		public Phone() { }
+
+
+		public Phone(int cityId, int id, string fieldType, string phone = default, int? contactId = default, string name = default): base(id, fieldType, contactId, name)
 		{
-			this.cityId = cityId_;
-			this.phone = phone_;
+			this.cityId = cityId;
+			this.phone = phone;
 		}
 	}
 }

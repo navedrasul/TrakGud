@@ -1,16 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.UserManagement
 {
-	public class User_Right: Right
+[Table("um__User_Right")]	public class User_Right: Right
 	{
 		public int userId { get; set; }
 
-		public User_Right(int userId_, int id_, string title_, bool isActive_, DateTime addTS_, int adderId_, string desc_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default): base(id_, title_, isActive_, addTS_, adderId_, desc_, modderId_, isRemoved_, modTS_)
+		public User_Right() { }
+
+
+		public User_Right(int userId, int id, string title, bool isActive, DateTime addTS, int adderId, string desc = default, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default): base(id, title, isActive, addTS, adderId, desc, modderId, isRemoved, modTS)
 		{
-			this.userId = userId_;
+			this.userId = userId;
 		}
 	}
 }

@@ -1,19 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FleetManagement
 {
-	public class VehicleCapacity
+[Table("fm__VehicleCapacity")]	public class VehicleCapacity
 	{
 		public int vehicleId { get; set; }
 		public int capacityUnitId { get; set; }
 		public float capacity { get; set; }
 
-		public VehicleCapacity(int vehicleId_, int capacityUnitId_, float capacity_)		{
-			this.vehicleId = vehicleId_;
-			this.capacityUnitId = capacityUnitId_;
-			this.capacity = capacity_;
+		public VehicleCapacity() { }
+
+
+		public VehicleCapacity(int vehicleId, int capacityUnitId, float capacity)		{
+			this.vehicleId = vehicleId;
+			this.capacityUnitId = capacityUnitId;
+			this.capacity = capacity;
 		}
 	}
 }

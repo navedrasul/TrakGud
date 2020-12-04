@@ -1,18 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.Domain
 {
-	public class RemovedItemBatch: ItemBatch
+[Table("d__RemovedItemBatch")]	public class RemovedItemBatch: ItemBatch
 	{
 		public string removalReason { get; set; }
-		public DateTime removalTS { get; set; }
+		public DateTime? removalTS { get; set; }
 
-		public RemovedItemBatch(string removalReason_, int id_, string itemBatchType_, int productId_, DateTime addTS_, int adderId_, DateTime removalTS_ = default, string sourceType_ = default, int? sourceId_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default): base(id_, itemBatchType_, productId_, addTS_, adderId_, sourceType_, sourceId_, modderId_, isRemoved_, modTS_)
+		public RemovedItemBatch() { }
+
+
+		public RemovedItemBatch(string removalReason, int id, string itemBatchType, int productId, DateTime addTS, int adderId, DateTime? removalTS = default, string sourceType = default, int? sourceId = default, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default): base(id, itemBatchType, productId, addTS, adderId, sourceType, sourceId, modderId, isRemoved, modTS)
 		{
-			this.removalReason = removalReason_;
-			this.removalTS = removalTS_;
+			this.removalReason = removalReason;
+			this.removalTS = removalTS;
 		}
 	}
 }

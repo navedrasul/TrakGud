@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.Domain
 {
-	public class ItemBatch
+[Table("d__ItemBatch")]	public class ItemBatch
 	{
 		public int id { get; set; }
 		public string itemBatchType { get; set; }
@@ -15,19 +16,22 @@ namespace TrakGud.DAL.Models.Domain
 		public int? sourceId { get; set; }
 		public int? modderId { get; set; }
 		public bool? isRemoved { get; set; }
-		public DateTime modTS { get; set; }
+		public DateTime? modTS { get; set; }
 
-		public ItemBatch(int id_, string itemBatchType_, int productId_, DateTime addTS_, int adderId_, string sourceType_ = default, int? sourceId_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default)		{
-			this.id = id_;
-			this.itemBatchType = itemBatchType_;
-			this.productId = productId_;
-			this.addTS = addTS_;
-			this.adderId = adderId_;
-			this.sourceType = sourceType_;
-			this.sourceId = sourceId_;
-			this.modderId = modderId_;
-			this.isRemoved = isRemoved_;
-			this.modTS = modTS_;
+		public ItemBatch() { }
+
+
+		public ItemBatch(int id, string itemBatchType, int productId, DateTime addTS, int adderId, string sourceType = default, int? sourceId = default, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default)		{
+			this.id = id;
+			this.itemBatchType = itemBatchType;
+			this.productId = productId;
+			this.addTS = addTS;
+			this.adderId = adderId;
+			this.sourceType = sourceType;
+			this.sourceId = sourceId;
+			this.modderId = modderId;
+			this.isRemoved = isRemoved;
+			this.modTS = modTS;
 		}
 	}
 }

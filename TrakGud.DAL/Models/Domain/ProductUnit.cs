@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.Domain
 {
-	public class ProductUnit
+[Table("d__ProductUnit")]	public class ProductUnit
 	{
 		public int id { get; set; }
 		public string name { get; set; }
@@ -13,17 +14,20 @@ namespace TrakGud.DAL.Models.Domain
 		public int adderId { get; set; }
 		public int? modderId { get; set; }
 		public bool? isDefault { get; set; }
-		public DateTime modTS { get; set; }
+		public DateTime? modTS { get; set; }
 
-		public ProductUnit(int id_, string name_, int productId_, DateTime addTS_, int adderId_, int? modderId_ = default, bool? isDefault_ = default, DateTime modTS_ = default)		{
-			this.id = id_;
-			this.name = name_;
-			this.productId = productId_;
-			this.addTS = addTS_;
-			this.adderId = adderId_;
-			this.modderId = modderId_;
-			this.isDefault = isDefault_;
-			this.modTS = modTS_;
+		public ProductUnit() { }
+
+
+		public ProductUnit(int id, string name, int productId, DateTime addTS, int adderId, int? modderId = default, bool? isDefault = default, DateTime? modTS = default)		{
+			this.id = id;
+			this.name = name;
+			this.productId = productId;
+			this.addTS = addTS;
+			this.adderId = adderId;
+			this.modderId = modderId;
+			this.isDefault = isDefault;
+			this.modTS = modTS;
 		}
 	}
 }

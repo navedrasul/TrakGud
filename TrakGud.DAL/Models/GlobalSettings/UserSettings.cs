@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.GlobalSettings
 {
-	public class UserSettings
+[Table("gs__UserSettings")]	public class UserSettings
 	{
 		public int userId { get; set; }
 		public int? currentThemeId { get; set; }
 
-		public UserSettings(int userId_, int? currentThemeId_ = default)		{
-			this.userId = userId_;
-			this.currentThemeId = currentThemeId_;
+		public UserSettings() { }
+
+
+		public UserSettings(int userId, int? currentThemeId = default)		{
+			this.userId = userId;
+			this.currentThemeId = currentThemeId;
 		}
 	}
 }

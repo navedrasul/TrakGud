@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FinanceManagement
 {
-	public class Transaction
+[Table("fim__Transaction")]	public class Transaction
 	{
 		public int id { get; set; }
 		public string type { get; set; }
@@ -15,21 +16,24 @@ namespace TrakGud.DAL.Models.FinanceManagement
 		public string RST { get; set; }
 		public int? modderId { get; set; }
 		public bool? isRemoved { get; set; }
-		public DateTime TS { get; set; }
-		public DateTime modTS { get; set; }
+		public DateTime? TS { get; set; }
+		public DateTime? modTS { get; set; }
 
-		public Transaction(int id_, string type_, int paymentId_, DateTime addTS_, int adderId_, string RCT_ = default, string RST_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime TS_ = default, DateTime modTS_ = default)		{
-			this.id = id_;
-			this.type = type_;
-			this.paymentId = paymentId_;
-			this.addTS = addTS_;
-			this.adderId = adderId_;
-			this.RCT = RCT_;
-			this.RST = RST_;
-			this.modderId = modderId_;
-			this.isRemoved = isRemoved_;
-			this.TS = TS_;
-			this.modTS = modTS_;
+		public Transaction() { }
+
+
+		public Transaction(int id, string type, int paymentId, DateTime addTS, int adderId, string RCT = default, string RST = default, int? modderId = default, bool? isRemoved = default, DateTime? TS = default, DateTime? modTS = default)		{
+			this.id = id;
+			this.type = type;
+			this.paymentId = paymentId;
+			this.addTS = addTS;
+			this.adderId = adderId;
+			this.RCT = RCT;
+			this.RST = RST;
+			this.modderId = modderId;
+			this.isRemoved = isRemoved;
+			this.TS = TS;
+			this.modTS = modTS;
 		}
 	}
 }

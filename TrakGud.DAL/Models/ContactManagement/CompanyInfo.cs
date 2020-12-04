@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.ContactManagement
 {
-	public class CompanyInfo
+[Table("cm__CompanyInfo")]	public class CompanyInfo
 	{
 		public int id { get; set; }
 		public string name { get; set; }
 
-		public CompanyInfo(int id_, string name_)		{
-			this.id = id_;
-			this.name = name_;
+		public CompanyInfo() { }
+
+
+		public CompanyInfo(int id, string name)		{
+			this.id = id;
+			this.name = name;
 		}
 	}
 }

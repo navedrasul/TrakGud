@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FleetManagement
 {
-	public class Vehicle
+[Table("fm__Vehicle")]	public class Vehicle
 	{
 		public int id { get; set; }
 		public string name { get; set; }
@@ -18,24 +19,27 @@ namespace TrakGud.DAL.Models.FleetManagement
 		public bool? isInService { get; set; }
 		public int? modderId { get; set; }
 		public bool? isRemoved { get; set; }
-		public DateTime driverAssignmentTS { get; set; }
-		public DateTime modTS { get; set; }
+		public DateTime? driverAssignmentTS { get; set; }
+		public DateTime? modTS { get; set; }
 
-		public Vehicle(int id_, string name_, string regNumber_, string status_, DateTime addTS_, int adderId_, string desc_ = default, int? vehicleTypeId_ = default, int? currentDriverId_ = default, bool? isInService_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime driverAssignmentTS_ = default, DateTime modTS_ = default)		{
-			this.id = id_;
-			this.name = name_;
-			this.regNumber = regNumber_;
-			this.status = status_;
-			this.addTS = addTS_;
-			this.adderId = adderId_;
-			this.desc = desc_;
-			this.vehicleTypeId = vehicleTypeId_;
-			this.currentDriverId = currentDriverId_;
-			this.isInService = isInService_;
-			this.modderId = modderId_;
-			this.isRemoved = isRemoved_;
-			this.driverAssignmentTS = driverAssignmentTS_;
-			this.modTS = modTS_;
+		public Vehicle() { }
+
+
+		public Vehicle(int id, string name, string regNumber, string status, DateTime addTS, int adderId, string desc = default, int? vehicleTypeId = default, int? currentDriverId = default, bool? isInService = default, int? modderId = default, bool? isRemoved = default, DateTime? driverAssignmentTS = default, DateTime? modTS = default)		{
+			this.id = id;
+			this.name = name;
+			this.regNumber = regNumber;
+			this.status = status;
+			this.addTS = addTS;
+			this.adderId = adderId;
+			this.desc = desc;
+			this.vehicleTypeId = vehicleTypeId;
+			this.currentDriverId = currentDriverId;
+			this.isInService = isInService;
+			this.modderId = modderId;
+			this.isRemoved = isRemoved;
+			this.driverAssignmentTS = driverAssignmentTS;
+			this.modTS = modTS;
 		}
 	}
 }

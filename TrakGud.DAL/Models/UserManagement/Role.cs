@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.UserManagement
 {
-	public class Role
+[Table("um__Role")]	public class Role
 	{
 		public int id { get; set; }
 		public string title { get; set; }
@@ -12,16 +13,19 @@ namespace TrakGud.DAL.Models.UserManagement
 		public int adderId { get; set; }
 		public int? modderId { get; set; }
 		public bool? isRemoved { get; set; }
-		public DateTime modTS { get; set; }
+		public DateTime? modTS { get; set; }
 
-		public Role(int id_, string title_, DateTime addTS_, int adderId_, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default)		{
-			this.id = id_;
-			this.title = title_;
-			this.addTS = addTS_;
-			this.adderId = adderId_;
-			this.modderId = modderId_;
-			this.isRemoved = isRemoved_;
-			this.modTS = modTS_;
+		public Role() { }
+
+
+		public Role(int id, string title, DateTime addTS, int adderId, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default)		{
+			this.id = id;
+			this.title = title;
+			this.addTS = addTS;
+			this.adderId = adderId;
+			this.modderId = modderId;
+			this.isRemoved = isRemoved;
+			this.modTS = modTS;
 		}
 	}
 }

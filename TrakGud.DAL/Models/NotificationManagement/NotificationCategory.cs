@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.NotificationManagement
 {
-	public class NotificationCategory
+[Table("nm__NotificationCategory")]	public class NotificationCategory
 	{
 		public int id { get; set; }
 		public string name { get; set; }
 
-		public NotificationCategory(int id_, string name_)		{
-			this.id = id_;
-			this.name = name_;
+		public NotificationCategory() { }
+
+
+		public NotificationCategory(int id, string name)		{
+			this.id = id;
+			this.name = name;
 		}
 	}
 }

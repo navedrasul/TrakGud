@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FleetManagement
 {
-	public class VehicleCapacityUnit
+[Table("fm__VehicleCapacityUnit")]	public class VehicleCapacityUnit
 	{
 		public int id { get; set; }
 		public string name { get; set; }
@@ -14,18 +15,21 @@ namespace TrakGud.DAL.Models.FleetManagement
 		public int? vehicleTypeId { get; set; }
 		public int? modderId { get; set; }
 		public bool? isDefault { get; set; }
-		public DateTime modTS { get; set; }
+		public DateTime? modTS { get; set; }
 
-		public VehicleCapacityUnit(int id_, string name_, int vehicleUnitTypeId_, DateTime addTS_, int adderId_, int? vehicleTypeId_ = default, int? modderId_ = default, bool? isDefault_ = default, DateTime modTS_ = default)		{
-			this.id = id_;
-			this.name = name_;
-			this.vehicleUnitTypeId = vehicleUnitTypeId_;
-			this.addTS = addTS_;
-			this.adderId = adderId_;
-			this.vehicleTypeId = vehicleTypeId_;
-			this.modderId = modderId_;
-			this.isDefault = isDefault_;
-			this.modTS = modTS_;
+		public VehicleCapacityUnit() { }
+
+
+		public VehicleCapacityUnit(int id, string name, int vehicleUnitTypeId, DateTime addTS, int adderId, int? vehicleTypeId = default, int? modderId = default, bool? isDefault = default, DateTime? modTS = default)		{
+			this.id = id;
+			this.name = name;
+			this.vehicleUnitTypeId = vehicleUnitTypeId;
+			this.addTS = addTS;
+			this.adderId = adderId;
+			this.vehicleTypeId = vehicleTypeId;
+			this.modderId = modderId;
+			this.isDefault = isDefault;
+			this.modTS = modTS;
 		}
 	}
 }

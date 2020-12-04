@@ -1,21 +1,25 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.GlobalSettings
 {
-	public class Theme
+[Table("gs__Theme")]	public class Theme
 	{
 		public int id { get; set; }
 		public string title { get; set; }
 		public string themePath { get; set; }
 		public string desc { get; set; }
 
-		public Theme(int id_, string title_, string themePath_, string desc_ = default)		{
-			this.id = id_;
-			this.title = title_;
-			this.themePath = themePath_;
-			this.desc = desc_;
+		public Theme() { }
+
+
+		public Theme(int id, string title, string themePath, string desc = default)		{
+			this.id = id;
+			this.title = title;
+			this.themePath = themePath;
+			this.desc = desc;
 		}
 	}
 }

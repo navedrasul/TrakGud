@@ -1,19 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.Domain
 {
-	public class ItemRemovalHistory
+[Table("d__ItemRemovalHistory")]	public class ItemRemovalHistory
 	{
 		public int batchId { get; set; }
 		public int removerId { get; set; }
-		public DateTime TS { get; set; }
+		public DateTime? TS { get; set; }
 
-		public ItemRemovalHistory(int batchId_, int removerId_, DateTime TS_ = default)		{
-			this.batchId = batchId_;
-			this.removerId = removerId_;
-			this.TS = TS_;
+		public ItemRemovalHistory() { }
+
+
+		public ItemRemovalHistory(int batchId, int removerId, DateTime? TS = default)		{
+			this.batchId = batchId;
+			this.removerId = removerId;
+			this.TS = TS;
 		}
 	}
 }

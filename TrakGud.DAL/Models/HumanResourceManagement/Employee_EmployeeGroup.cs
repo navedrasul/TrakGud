@@ -1,21 +1,25 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.HumanResourceManagement
 {
-	public class Employee_EmployeeGroup
+[Table("hrm__Employee_EmployeeGroup")]	public class Employee_EmployeeGroup
 	{
 		public int employeeId { get; set; }
 		public int employeeGroupId { get; set; }
 		public string designationAtGroup { get; set; }
 		public string designationDesc { get; set; }
 
-		public Employee_EmployeeGroup(int employeeId_, int employeeGroupId_, string designationAtGroup_ = default, string designationDesc_ = default)		{
-			this.employeeId = employeeId_;
-			this.employeeGroupId = employeeGroupId_;
-			this.designationAtGroup = designationAtGroup_;
-			this.designationDesc = designationDesc_;
+		public Employee_EmployeeGroup() { }
+
+
+		public Employee_EmployeeGroup(int employeeId, int employeeGroupId, string designationAtGroup = default, string designationDesc = default)		{
+			this.employeeId = employeeId;
+			this.employeeGroupId = employeeGroupId;
+			this.designationAtGroup = designationAtGroup;
+			this.designationDesc = designationDesc;
 		}
 	}
 }

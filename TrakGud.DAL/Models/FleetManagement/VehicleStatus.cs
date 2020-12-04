@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FleetManagement
 {
-	public class VehicleStatus
+[Table("fm__VehicleStatus")]	public class VehicleStatus
 	{
 		public string value { get; set; }
 		public string text { get; set; }
 
-		public VehicleStatus(string value_, string text_)		{
-			this.value = value_;
-			this.text = text_;
+		public VehicleStatus() { }
+
+
+		public VehicleStatus(string value, string text)		{
+			this.value = value;
+			this.text = text;
 		}
 	}
 }

@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FinanceManagement
 {
-	public class BankBranchPOC
+[Table("fim__BankBranchPOC")]	public class BankBranchPOC
 	{
 		public int bankBranchId { get; set; }
 		public int contactId { get; set; }
 
-		public BankBranchPOC(int bankBranchId_, int contactId_)		{
-			this.bankBranchId = bankBranchId_;
-			this.contactId = contactId_;
+		public BankBranchPOC() { }
+
+
+		public BankBranchPOC(int bankBranchId, int contactId)		{
+			this.bankBranchId = bankBranchId;
+			this.contactId = contactId;
 		}
 	}
 }

@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.Domain
 {
-	public class RelativeStateProvType
+[Table("d__RelativeStateProvType")]	public class RelativeStateProvType
 	{
 		public string value { get; set; }
 		public string text { get; set; }
 
-		public RelativeStateProvType(string value_, string text_)		{
-			this.value = value_;
-			this.text = text_;
+		public RelativeStateProvType() { }
+
+
+		public RelativeStateProvType(string value, string text)		{
+			this.value = value;
+			this.text = text;
 		}
 	}
 }

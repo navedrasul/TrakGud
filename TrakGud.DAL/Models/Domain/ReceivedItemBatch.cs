@@ -1,20 +1,24 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.Domain
 {
-	public class ReceivedItemBatch: ItemBatch
+[Table("d__ReceivedItemBatch")]	public class ReceivedItemBatch: ItemBatch
 	{
 		public int? supplierId { get; set; }
 		public int? transactionId { get; set; }
-		public DateTime receptionTS { get; set; }
+		public DateTime? receptionTS { get; set; }
 
-		public ReceivedItemBatch(int id_, string itemBatchType_, int productId_, DateTime addTS_, int adderId_, int? supplierId_ = default, int? transactionId_ = default, DateTime receptionTS_ = default, string sourceType_ = default, int? sourceId_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default): base(id_, itemBatchType_, productId_, addTS_, adderId_, sourceType_, sourceId_, modderId_, isRemoved_, modTS_)
+		public ReceivedItemBatch() { }
+
+
+		public ReceivedItemBatch(int id, string itemBatchType, int productId, DateTime addTS, int adderId, int? supplierId = default, int? transactionId = default, DateTime? receptionTS = default, string sourceType = default, int? sourceId = default, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default): base(id, itemBatchType, productId, addTS, adderId, sourceType, sourceId, modderId, isRemoved, modTS)
 		{
-			this.supplierId = supplierId_;
-			this.transactionId = transactionId_;
-			this.receptionTS = receptionTS_;
+			this.supplierId = supplierId;
+			this.transactionId = transactionId;
+			this.receptionTS = receptionTS;
 		}
 	}
 }

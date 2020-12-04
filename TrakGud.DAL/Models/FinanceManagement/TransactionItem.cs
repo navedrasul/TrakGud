@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FinanceManagement
 {
-	public class TransactionItem
+[Table("fim__TransactionItem")]	public class TransactionItem
 	{
 		public int id { get; set; }
 		public int transactionId { get; set; }
@@ -14,14 +15,17 @@ namespace TrakGud.DAL.Models.FinanceManagement
 		public int unitId { get; set; }
 		public float? discount { get; set; }
 
-		public TransactionItem(int id_, int transactionId_, int itemBatchId_, float price_, float qty_, int unitId_, float? discount_ = default)		{
-			this.id = id_;
-			this.transactionId = transactionId_;
-			this.itemBatchId = itemBatchId_;
-			this.price = price_;
-			this.qty = qty_;
-			this.unitId = unitId_;
-			this.discount = discount_;
+		public TransactionItem() { }
+
+
+		public TransactionItem(int id, int transactionId, int itemBatchId, float price, float qty, int unitId, float? discount = default)		{
+			this.id = id;
+			this.transactionId = transactionId;
+			this.itemBatchId = itemBatchId;
+			this.price = price;
+			this.qty = qty;
+			this.unitId = unitId;
+			this.discount = discount;
 		}
 	}
 }

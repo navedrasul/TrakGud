@@ -1,16 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FinanceManagement
 {
-	public class CashPayment: Payment
+[Table("fim__CashPayment")]	public class CashPayment: Payment
 	{
 		public float receivedAmt { get; set; }
 
-		public CashPayment(float receivedAmt_, int id_, string type_): base(id_, type_)
+		public CashPayment() { }
+
+
+		public CashPayment(float receivedAmt, int id, string type): base(id, type)
 		{
-			this.receivedAmt = receivedAmt_;
+			this.receivedAmt = receivedAmt;
 		}
 	}
 }

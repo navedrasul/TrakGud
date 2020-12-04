@@ -1,19 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using TrakGud.DAL.Models.Domain;
 
 namespace TrakGud.DAL.Models.ShipmentManagement
 {
-	public class DestinationItemBatch: ItemBatch
+[Table("sm__DestinationItemBatch")]	public class DestinationItemBatch: ItemBatch
 	{
 		public float? receivedQty { get; set; }
 		public int? receivedUnitId { get; set; }
 
-		public DestinationItemBatch(int id_, string itemBatchType_, int productId_, DateTime addTS_, int adderId_, float? receivedQty_ = default, int? receivedUnitId_ = default, string sourceType_ = default, int? sourceId_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default): base(id_, itemBatchType_, productId_, addTS_, adderId_, sourceType_, sourceId_, modderId_, isRemoved_, modTS_)
+		public DestinationItemBatch() { }
+
+
+		public DestinationItemBatch(int id, string itemBatchType, int productId, DateTime addTS, int adderId, float? receivedQty = default, int? receivedUnitId = default, string sourceType = default, int? sourceId = default, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default): base(id, itemBatchType, productId, addTS, adderId, sourceType, sourceId, modderId, isRemoved, modTS)
 		{
-			this.receivedQty = receivedQty_;
-			this.receivedUnitId = receivedUnitId_;
+			this.receivedQty = receivedQty;
+			this.receivedUnitId = receivedUnitId;
 		}
 	}
 }

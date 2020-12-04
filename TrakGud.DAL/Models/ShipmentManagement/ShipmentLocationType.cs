@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.ShipmentManagement
 {
-	public class ShipmentLocationType
+[Table("sm__ShipmentLocationType")]	public class ShipmentLocationType
 	{
 		public string value { get; set; }
 		public string text { get; set; }
 
-		public ShipmentLocationType(string value_, string text_)		{
-			this.value = value_;
-			this.text = text_;
+		public ShipmentLocationType() { }
+
+
+		public ShipmentLocationType(string value, string text)		{
+			this.value = value;
+			this.text = text;
 		}
 	}
 }

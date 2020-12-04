@@ -1,21 +1,25 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FinanceManagement
 {
-	public class PaymentPart
+[Table("fim__PaymentPart")]	public class PaymentPart
 	{
 		public int id { get; set; }
 		public int paymentPartTypeId { get; set; }
 		public float totalAmt { get; set; }
 		public bool? isComplete { get; set; }
 
-		public PaymentPart(int id_, int paymentPartTypeId_, float totalAmt_, bool? isComplete_ = default)		{
-			this.id = id_;
-			this.paymentPartTypeId = paymentPartTypeId_;
-			this.totalAmt = totalAmt_;
-			this.isComplete = isComplete_;
+		public PaymentPart() { }
+
+
+		public PaymentPart(int id, int paymentPartTypeId, float totalAmt, bool? isComplete = default)		{
+			this.id = id;
+			this.paymentPartTypeId = paymentPartTypeId;
+			this.totalAmt = totalAmt;
+			this.isComplete = isComplete;
 		}
 	}
 }

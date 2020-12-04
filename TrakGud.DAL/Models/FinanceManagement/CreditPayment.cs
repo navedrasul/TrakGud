@@ -1,18 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.FinanceManagement
 {
-	public class CreditPayment: Payment
+[Table("fim__CreditPayment")]	public class CreditPayment: Payment
 	{
 		public float? receivedAmt { get; set; }
-		public DateTime dueDate { get; set; }
+		public DateTime? dueDate { get; set; }
 
-		public CreditPayment(int id_, string type_, float? receivedAmt_ = default, DateTime dueDate_ = default): base(id_, type_)
+		public CreditPayment() { }
+
+
+		public CreditPayment(int id, string type, float? receivedAmt = default, DateTime? dueDate = default): base(id, type)
 		{
-			this.receivedAmt = receivedAmt_;
-			this.dueDate = dueDate_;
+			this.receivedAmt = receivedAmt;
+			this.dueDate = dueDate;
 		}
 	}
 }

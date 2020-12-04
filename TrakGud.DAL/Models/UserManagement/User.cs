@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TrakGud.DAL.Models.UserManagement
 {
-	public class User
+[Table("um__User")]	public class User
 	{
 		public int id { get; set; }
 		public string username { get; set; }
@@ -16,20 +17,23 @@ namespace TrakGud.DAL.Models.UserManagement
 		public int? employeeId { get; set; }
 		public int? modderId { get; set; }
 		public bool? isRemoved { get; set; }
-		public DateTime modTS { get; set; }
+		public DateTime? modTS { get; set; }
 
-		public User(int id_, string username_, string passwordHash_, DateTime addTS_, int adderId_, bool? isDisabled_ = default, string fullName_ = default, int? employeeId_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default)		{
-			this.id = id_;
-			this.username = username_;
-			this.passwordHash = passwordHash_;
-			this.addTS = addTS_;
-			this.adderId = adderId_;
-			this.isDisabled = isDisabled_;
-			this.fullName = fullName_;
-			this.employeeId = employeeId_;
-			this.modderId = modderId_;
-			this.isRemoved = isRemoved_;
-			this.modTS = modTS_;
+		public User() { }
+
+
+		public User(int id, string username, string passwordHash, DateTime addTS, int adderId, bool? isDisabled = default, string fullName = default, int? employeeId = default, int? modderId = default, bool? isRemoved = default, DateTime? modTS = default)		{
+			this.id = id;
+			this.username = username;
+			this.passwordHash = passwordHash;
+			this.addTS = addTS;
+			this.adderId = adderId;
+			this.isDisabled = isDisabled;
+			this.fullName = fullName;
+			this.employeeId = employeeId;
+			this.modderId = modderId;
+			this.isRemoved = isRemoved;
+			this.modTS = modTS;
 		}
 	}
 }
