@@ -8,7 +8,7 @@ namespace TrakGud.DAL.Models.UserManagement
 	{
 		public int userId { get; set; }
 
-		public User_Right(int id_, string title_, bool isActive_, DateTime addTS_, int adderId_, string desc_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default, int userId_): base(id_, title_, isActive_, addTS_, adderId_, desc_, modderId_, isRemoved_, modTS_)
+		public User_Right(int userId_, int id_, string title_, bool isActive_, DateTime addTS_, int adderId_, string desc_ = default, int? modderId_ = default, bool? isRemoved_ = default, DateTime modTS_ = default): base(id_, title_, isActive_, addTS_, adderId_, desc_, modderId_, isRemoved_, modTS_)
 		{
 			this.userId = userId_;
 		}
