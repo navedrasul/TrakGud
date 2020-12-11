@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-//using TrakGud.DAL.Repos;
+using TrakGud.DAL.Repos;
 
 namespace TrakGud.API
 {
@@ -27,9 +27,9 @@ namespace TrakGud.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddEntityFrameworkNpgsql().AddDbContext<DomainContext>(opt =>
-            //    opt.UseNpgsql(Configuration.GetConnectionString("TGE1Conection"))
-            //);
+            services.AddEntityFrameworkNpgsql().AddDbContext<TGEContext>(opt =>
+                opt.UseNpgsql(Configuration.GetConnectionString("TGE1Conection"))
+            );
 
             services.AddControllers();
         }
