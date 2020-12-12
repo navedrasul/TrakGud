@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TrakGud.DAL.Models
 {
-    [Keyless]
     [Table("fim__CreditPayment")]
     public partial class FimCreditPayment
     {
+        [Key]
         [Column("id")]
         public int Id { get; set; }
         [Required]
@@ -24,6 +24,7 @@ namespace TrakGud.DAL.Models
         public DateTime? DueDate { get; set; }
 
         [ForeignKey(nameof(Type))]
+        [InverseProperty(nameof(FimPaymentType.FimCreditPayments))]
         public virtual FimPaymentType TypeNavigation { get; set; }
     }
 }

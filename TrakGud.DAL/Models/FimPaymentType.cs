@@ -15,6 +15,7 @@ namespace TrakGud.DAL.Models
         {
             FimCashPayments = new HashSet<FimCashPayment>();
             FimChequePayments = new HashSet<FimChequePayment>();
+            FimCreditPayments = new HashSet<FimCreditPayment>();
             FimPayments = new HashSet<FimPayment>();
         }
 
@@ -31,6 +32,8 @@ namespace TrakGud.DAL.Models
         public virtual ICollection<FimCashPayment> FimCashPayments { get; set; }
         [InverseProperty(nameof(FimChequePayment.TypeNavigation))]
         public virtual ICollection<FimChequePayment> FimChequePayments { get; set; }
+        [InverseProperty(nameof(FimCreditPayment.TypeNavigation))]
+        public virtual ICollection<FimCreditPayment> FimCreditPayments { get; set; }
         [InverseProperty(nameof(FimPayment.TypeNavigation))]
         public virtual ICollection<FimPayment> FimPayments { get; set; }
     }

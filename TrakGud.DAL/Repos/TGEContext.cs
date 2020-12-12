@@ -119,6 +119,7 @@ namespace TrakGud.DAL.Repos
         public virtual DbSet<SmShipmentVehicle> SmShipmentVehicles { get; set; }
         public virtual DbSet<SmShippedItemBatch> SmShippedItemBatches { get; set; }
         public virtual DbSet<SmSourceItemBatch> SmSourceItemBatches { get; set; }
+        public virtual DbSet<TestTable1> TestTable1s { get; set; }
         public virtual DbSet<UmRight> UmRights { get; set; }
         public virtual DbSet<UmRightRightsSection> UmRightRightsSections { get; set; }
         public virtual DbSet<UmRightsSection> UmRightsSections { get; set; }
@@ -1108,7 +1109,7 @@ namespace TrakGud.DAL.Repos
                 entity.Property(e => e.Id).HasDefaultValueSql("nextval('\"fim__Payment_id_seq\"'::regclass)");
 
                 entity.HasOne(d => d.TypeNavigation)
-                    .WithMany()
+                    .WithMany(p => p.FimCreditPayments)
                     .HasForeignKey(d => d.Type)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("type_fkey");
@@ -1896,6 +1897,13 @@ namespace TrakGud.DAL.Repos
                     .WithMany(p => p.SmSourceItemBatches)
                     .HasForeignKey(d => d.SourceType)
                     .HasConstraintName("sourceType_fkey");
+            });
+
+            modelBuilder.Entity<TestTable1>(entity =>
+            {
+                entity.HasComment("just for testing");
+
+                entity.Property(e => e.Id).UseIdentityAlwaysColumn();
             });
 
             modelBuilder.Entity<UmRight>(entity =>
