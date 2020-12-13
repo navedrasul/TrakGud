@@ -1,0 +1,107 @@
+﻿@model IEnumerable<TrakGud.DAL.Models.DItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddTs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRemoved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpireTs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpireMargin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFixed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsExpired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModTs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unit)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddTs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRemoved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpireTs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpireMargin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFixed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsExpired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModTs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adder.PasswordHash)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modder.PasswordHash)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prod.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unit.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

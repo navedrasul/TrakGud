@@ -1,0 +1,89 @@
+﻿@model TrakGud.DAL.Models.DItem
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>DItem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProdId" class="control-label"></label>
+                <select asp-for="ProdId" class ="form-control" asp-items="ViewBag.ProdId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddTs" class="control-label"></label>
+                <input asp-for="AddTs" class="form-control" />
+                <span asp-validation-for="AddTs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdderId" class="control-label"></label>
+                <select asp-for="AdderId" class ="form-control" asp-items="ViewBag.AdderId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModderId" class="control-label"></label>
+                <select asp-for="ModderId" class ="form-control" asp-items="ViewBag.ModderId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsRemoved" class="control-label"></label>
+                <input asp-for="IsRemoved" class="form-control" />
+                <span asp-validation-for="IsRemoved" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Qty" class="control-label"></label>
+                <input asp-for="Qty" class="form-control" />
+                <span asp-validation-for="Qty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitId" class="control-label"></label>
+                <select asp-for="UnitId" class ="form-control" asp-items="ViewBag.UnitId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpireTs" class="control-label"></label>
+                <input asp-for="ExpireTs" class="form-control" />
+                <span asp-validation-for="ExpireTs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpireMargin" class="control-label"></label>
+                <input asp-for="ExpireMargin" class="form-control" />
+                <span asp-validation-for="ExpireMargin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsFixed" class="control-label"></label>
+                <input asp-for="IsFixed" class="form-control" />
+                <span asp-validation-for="IsFixed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsExpired" class="control-label"></label>
+                <input asp-for="IsExpired" class="form-control" />
+                <span asp-validation-for="IsExpired" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModTs" class="control-label"></label>
+                <input asp-for="ModTs" class="form-control" />
+                <span asp-validation-for="ModTs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
