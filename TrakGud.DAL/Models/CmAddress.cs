@@ -11,13 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("cm__Address")]
     public partial class CmAddress
     {
-        public CmAddress()
-        {
-            CmAddressContactFields = new HashSet<CmAddressContactField>();
-            CmLocationInfos = new HashSet<CmLocationInfo>();
-            FimBankBranches = new HashSet<FimBankBranch>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -36,15 +29,5 @@ namespace TrakGud.DAL.Models
         public float? Latitude { get; set; }
         [Column("longitude")]
         public float? Longitude { get; set; }
-
-        [ForeignKey(nameof(CityId))]
-        [InverseProperty(nameof(CmCity.CmAddresses))]
-        public virtual CmCity City { get; set; }
-        [InverseProperty(nameof(CmAddressContactField.Address))]
-        public virtual ICollection<CmAddressContactField> CmAddressContactFields { get; set; }
-        [InverseProperty(nameof(CmLocationInfo.Address))]
-        public virtual ICollection<CmLocationInfo> CmLocationInfos { get; set; }
-        [InverseProperty(nameof(FimBankBranch.Address))]
-        public virtual ICollection<FimBankBranch> FimBankBranches { get; set; }
     }
 }

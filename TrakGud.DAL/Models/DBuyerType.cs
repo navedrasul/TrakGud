@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("d__BuyerType")]
     public partial class DBuyerType
     {
-        public DBuyerType()
-        {
-            DBuyers = new HashSet<DBuyer>();
-        }
-
         [Key]
         [Column("value")]
         [StringLength(25)]
@@ -24,8 +19,5 @@ namespace TrakGud.DAL.Models
         [Column("text")]
         [StringLength(25)]
         public string Text { get; set; }
-
-        [InverseProperty(nameof(DBuyer.BuyerTypeNavigation))]
-        public virtual ICollection<DBuyer> DBuyers { get; set; }
     }
 }

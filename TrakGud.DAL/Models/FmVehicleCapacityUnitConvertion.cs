@@ -27,18 +27,5 @@ namespace TrakGud.DAL.Models
         public int? ModderId { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.FmVehicleCapacityUnitConvertionAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(DestinationUnitId))]
-        [InverseProperty(nameof(FmVehicleCapacityUnit.FmVehicleCapacityUnitConvertionDestinationUnits))]
-        public virtual FmVehicleCapacityUnit DestinationUnit { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.FmVehicleCapacityUnitConvertionModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(SourceUnitId))]
-        [InverseProperty(nameof(FmVehicleCapacityUnit.FmVehicleCapacityUnitConvertionSourceUnits))]
-        public virtual FmVehicleCapacityUnit SourceUnit { get; set; }
     }
 }

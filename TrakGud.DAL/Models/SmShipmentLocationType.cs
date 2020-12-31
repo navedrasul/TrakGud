@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("sm__ShipmentLocationType")]
     public partial class SmShipmentLocationType
     {
-        public SmShipmentLocationType()
-        {
-            SmShipmentLocations = new HashSet<SmShipmentLocation>();
-        }
-
         [Key]
         [Column("value")]
         [StringLength(25)]
@@ -24,8 +19,5 @@ namespace TrakGud.DAL.Models
         [Column("text")]
         [StringLength(25)]
         public string Text { get; set; }
-
-        [InverseProperty(nameof(SmShipmentLocation.TypeNavigation))]
-        public virtual ICollection<SmShipmentLocation> SmShipmentLocations { get; set; }
     }
 }

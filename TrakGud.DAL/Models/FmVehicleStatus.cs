@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("fm__VehicleStatus")]
     public partial class FmVehicleStatus
     {
-        public FmVehicleStatus()
-        {
-            FmVehicles = new HashSet<FmVehicle>();
-        }
-
         [Key]
         [Column("value")]
         [StringLength(25)]
@@ -24,8 +19,5 @@ namespace TrakGud.DAL.Models
         [Column("text")]
         [StringLength(25)]
         public string Text { get; set; }
-
-        [InverseProperty(nameof(FmVehicle.StatusNavigation))]
-        public virtual ICollection<FmVehicle> FmVehicles { get; set; }
     }
 }

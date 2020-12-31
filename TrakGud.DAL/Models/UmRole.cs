@@ -11,13 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("um__Role")]
     public partial class UmRole
     {
-        public UmRole()
-        {
-            CmContactMergers = new HashSet<CmContactMerger>();
-            UmRoleRights = new HashSet<UmRoleRight>();
-            UmUserRoles = new HashSet<UmUserRole>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -35,18 +28,5 @@ namespace TrakGud.DAL.Models
         public bool? IsRemoved { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.UmRoleAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.UmRoleModders))]
-        public virtual UmUser Modder { get; set; }
-        [InverseProperty(nameof(CmContactMerger.Modder))]
-        public virtual ICollection<CmContactMerger> CmContactMergers { get; set; }
-        [InverseProperty(nameof(UmRoleRight.Role))]
-        public virtual ICollection<UmRoleRight> UmRoleRights { get; set; }
-        [InverseProperty(nameof(UmUserRole.Role))]
-        public virtual ICollection<UmUserRole> UmUserRoles { get; set; }
     }
 }

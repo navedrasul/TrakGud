@@ -12,11 +12,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(ProdId), Name = "fki_prodId_fkey")]
     public partial class DItem
     {
-        public DItem()
-        {
-            DItemItemBatches = new HashSet<DItemItemBatch>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -46,22 +41,5 @@ namespace TrakGud.DAL.Models
         public bool? IsExpired { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.DItemAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.DItemModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(ProdId))]
-        [InverseProperty(nameof(DProduct.DItems))]
-        public virtual DProduct Prod { get; set; }
-        [ForeignKey(nameof(UnitId))]
-        [InverseProperty(nameof(DProductUnit.DItems))]
-        public virtual DProductUnit Unit { get; set; }
-        [InverseProperty("Item")]
-        public virtual DItemRemovalHistory DItemRemovalHistory { get; set; }
-        [InverseProperty(nameof(DItemItemBatch.Item))]
-        public virtual ICollection<DItemItemBatch> DItemItemBatches { get; set; }
     }
 }

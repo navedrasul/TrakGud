@@ -20,9 +20,5 @@ namespace TrakGud.DAL.Models
         public float? Discount { get; set; }
         [Column("total")]
         public float? Total { get; set; }
-
-        [ForeignKey(nameof(Id))]
-        [InverseProperty(nameof(FimTransaction.FimTransactionAmount))]
-        public virtual FimTransaction IdNavigation { get; set; }
     }
 }

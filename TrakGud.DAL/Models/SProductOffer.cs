@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("s__ProductOffer")]
     public partial class SProductOffer
     {
-        public SProductOffer()
-        {
-            SProductOfferItems = new HashSet<SProductOfferItem>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -42,14 +37,5 @@ namespace TrakGud.DAL.Models
         public DateTime? ValidToTs { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.SProductOfferAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.SProductOfferModders))]
-        public virtual UmUser Modder { get; set; }
-        [InverseProperty(nameof(SProductOfferItem.ProductOffer))]
-        public virtual ICollection<SProductOfferItem> SProductOfferItems { get; set; }
     }
 }

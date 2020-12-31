@@ -16,12 +16,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(SuppervisorId), Name = "fki_suppervisorId_fkey")]
     public partial class SmShipment
     {
-        public SmShipment()
-        {
-            SmMovingItemBatches = new HashSet<SmMovingItemBatch>();
-            SmShipmentVehicles = new HashSet<SmShipmentVehicle>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -47,31 +41,5 @@ namespace TrakGud.DAL.Models
         public bool? IsRemoved { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.SmShipmentAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(DestinationId))]
-        [InverseProperty(nameof(SmShipmentLocation.SmShipmentDestinations))]
-        public virtual SmShipmentLocation Destination { get; set; }
-        [ForeignKey(nameof(DestinationItemBatchId))]
-        [InverseProperty(nameof(SmDestinationItemBatch.SmShipments))]
-        public virtual SmDestinationItemBatch DestinationItemBatch { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.SmShipmentModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(SourceId))]
-        [InverseProperty(nameof(SmShipmentLocation.SmShipmentSources))]
-        public virtual SmShipmentLocation Source { get; set; }
-        [ForeignKey(nameof(SourceItemBatchId))]
-        [InverseProperty(nameof(SmSourceItemBatch.SmShipments))]
-        public virtual SmSourceItemBatch SourceItemBatch { get; set; }
-        [ForeignKey(nameof(SuppervisorId))]
-        [InverseProperty(nameof(UmUser.SmShipmentSuppervisors))]
-        public virtual UmUser Suppervisor { get; set; }
-        [InverseProperty(nameof(SmMovingItemBatch.Shipment))]
-        public virtual ICollection<SmMovingItemBatch> SmMovingItemBatches { get; set; }
-        [InverseProperty(nameof(SmShipmentVehicle.Shipment))]
-        public virtual ICollection<SmShipmentVehicle> SmShipmentVehicles { get; set; }
     }
 }

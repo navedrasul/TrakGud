@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("nm__NotificationSourceType")]
     public partial class NmNotificationSourceType
     {
-        public NmNotificationSourceType()
-        {
-            NmNotifications = new HashSet<NmNotification>();
-        }
-
         [Key]
         [Column("value")]
         [StringLength(25)]
@@ -24,8 +19,5 @@ namespace TrakGud.DAL.Models
         [Column("text")]
         [StringLength(25)]
         public string Text { get; set; }
-
-        [InverseProperty(nameof(NmNotification.NotificationSourceTypeNavigation))]
-        public virtual ICollection<NmNotification> NmNotifications { get; set; }
     }
 }

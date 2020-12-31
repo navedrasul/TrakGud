@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("um__RightsSection")]
     public partial class UmRightsSection
     {
-        public UmRightsSection()
-        {
-            UmRightRightsSections = new HashSet<UmRightRightsSection>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -25,8 +20,5 @@ namespace TrakGud.DAL.Models
         public string Title { get; set; }
         [Column("parentSectionId")]
         public int? ParentSectionId { get; set; }
-
-        [InverseProperty(nameof(UmRightRightsSection.RightsSection))]
-        public virtual ICollection<UmRightRightsSection> UmRightRightsSections { get; set; }
     }
 }

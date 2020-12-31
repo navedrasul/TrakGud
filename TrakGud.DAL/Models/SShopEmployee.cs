@@ -20,9 +20,5 @@ namespace TrakGud.DAL.Models
         public string Designation { get; set; }
         [Column("employeeId")]
         public int EmployeeId { get; set; }
-
-        [ForeignKey(nameof(EmployeeId))]
-        [InverseProperty(nameof(HrmEmployee.SShopEmployees))]
-        public virtual HrmEmployee Employee { get; set; }
     }
 }

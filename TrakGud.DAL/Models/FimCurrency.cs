@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("fim__Currency")]
     public partial class FimCurrency
     {
-        public FimCurrency()
-        {
-            GsAppSettings = new HashSet<GsAppSetting>();
-        }
-
         [Key]
         [Column("value")]
         [StringLength(3)]
@@ -24,8 +19,5 @@ namespace TrakGud.DAL.Models
         [Column("text")]
         [StringLength(60)]
         public string Text { get; set; }
-
-        [InverseProperty(nameof(GsAppSetting.DefaultCurrency))]
-        public virtual ICollection<GsAppSetting> GsAppSettings { get; set; }
     }
 }

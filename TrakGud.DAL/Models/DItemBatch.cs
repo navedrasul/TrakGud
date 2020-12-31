@@ -13,12 +13,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(SourceType), Name = "fki_sourceType_fkey")]
     public partial class DItemBatch
     {
-        public DItemBatch()
-        {
-            DItemItemBatches = new HashSet<DItemItemBatch>();
-            FimTransactionItems = new HashSet<FimTransactionItem>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -43,27 +37,5 @@ namespace TrakGud.DAL.Models
         public bool? IsRemoved { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.DItemBatchAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ItemBatchType))]
-        [InverseProperty(nameof(DItemBatchType.DItemBatches))]
-        public virtual DItemBatchType ItemBatchTypeNavigation { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.DItemBatchModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(ProductId))]
-        [InverseProperty(nameof(DProduct.DItemBatches))]
-        public virtual DProduct Product { get; set; }
-        [ForeignKey(nameof(SourceType))]
-        [InverseProperty(nameof(DItemBatchSourceType.DItemBatches))]
-        public virtual DItemBatchSourceType SourceTypeNavigation { get; set; }
-        [InverseProperty("IdNavigation")]
-        public virtual DItemBatchAgr DItemBatchAgr { get; set; }
-        [InverseProperty(nameof(DItemItemBatch.Batch))]
-        public virtual ICollection<DItemItemBatch> DItemItemBatches { get; set; }
-        [InverseProperty(nameof(FimTransactionItem.ItemBatch))]
-        public virtual ICollection<FimTransactionItem> FimTransactionItems { get; set; }
     }
 }

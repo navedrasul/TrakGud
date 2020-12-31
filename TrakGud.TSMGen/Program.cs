@@ -1,4 +1,5 @@
 ﻿using System;
+using TrakGud.API.Models;
 using TrakGud.DAL.Models;
 using TypeScriptBuilder;
 
@@ -132,6 +133,17 @@ namespace TrakGud.TSMGen
             ts.AddCSType(typeof(UmUserRight));
             ts.AddCSType(typeof(UmUserRole));
             ts.AddCSType(typeof(UmUserUserGroup));
+
+            // Models from TrakGud.API.
+            // NOTE: Add the base class after the derived classes (to maintain the required sequence in the generated TypeScript file).
+
+            ts.AddCSType(typeof(ApiDItem));
+
+            ts.AddCSType(typeof(ApiDItemBatch));
+            ts.AddCSType(typeof(ApiDReceivedItemBatch));
+            ts.AddCSType(typeof(ApiDItemBatchBase));
+
+            ts.AddCSType(typeof(ApiDSeller));
 
             #endregion
 

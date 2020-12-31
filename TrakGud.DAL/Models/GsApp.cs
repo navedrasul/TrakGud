@@ -30,14 +30,5 @@ namespace TrakGud.DAL.Models
         public string AppType { get; set; }
         [Column("userGroupId")]
         public int UserGroupId { get; set; }
-
-        [ForeignKey(nameof(AppType))]
-        [InverseProperty(nameof(GsAppType.GsApps))]
-        public virtual GsAppType AppTypeNavigation { get; set; }
-        [ForeignKey(nameof(UserGroupId))]
-        [InverseProperty(nameof(UmUserGroup.GsApps))]
-        public virtual UmUserGroup UserGroup { get; set; }
-        [InverseProperty("App")]
-        public virtual GsAppSetting GsAppSetting { get; set; }
     }
 }

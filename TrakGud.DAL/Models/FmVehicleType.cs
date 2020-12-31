@@ -11,12 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("fm__VehicleType")]
     public partial class FmVehicleType
     {
-        public FmVehicleType()
-        {
-            FmVehicleCapacityUnits = new HashSet<FmVehicleCapacityUnit>();
-            FmVehicles = new HashSet<FmVehicle>();
-        }
-
         [Key]
         [Column("value")]
         [StringLength(25)]
@@ -25,10 +19,5 @@ namespace TrakGud.DAL.Models
         [Column("text")]
         [StringLength(25)]
         public string Text { get; set; }
-
-        [InverseProperty(nameof(FmVehicleCapacityUnit.VehicleTypeNavigation))]
-        public virtual ICollection<FmVehicleCapacityUnit> FmVehicleCapacityUnits { get; set; }
-        [InverseProperty(nameof(FmVehicle.VehicleTypeNavigation))]
-        public virtual ICollection<FmVehicle> FmVehicles { get; set; }
     }
 }

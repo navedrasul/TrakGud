@@ -11,12 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("fim__Bank")]
     public partial class FimBank
     {
-        public FimBank()
-        {
-            FimBankBranches = new HashSet<FimBankBranch>();
-            FimCheques = new HashSet<FimCheque>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -27,10 +21,5 @@ namespace TrakGud.DAL.Models
         [Column("desc")]
         [StringLength(250)]
         public string Desc { get; set; }
-
-        [InverseProperty(nameof(FimBankBranch.Bank))]
-        public virtual ICollection<FimBankBranch> FimBankBranches { get; set; }
-        [InverseProperty(nameof(FimCheque.Bank))]
-        public virtual ICollection<FimCheque> FimCheques { get; set; }
     }
 }

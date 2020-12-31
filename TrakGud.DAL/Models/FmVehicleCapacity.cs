@@ -19,12 +19,5 @@ namespace TrakGud.DAL.Models
         public int CapacityUnitId { get; set; }
         [Column("capacity")]
         public float Capacity { get; set; }
-
-        [ForeignKey(nameof(CapacityUnitId))]
-        [InverseProperty(nameof(FmVehicleCapacityUnit.FmVehicleCapacities))]
-        public virtual FmVehicleCapacityUnit CapacityUnit { get; set; }
-        [ForeignKey(nameof(VehicleId))]
-        [InverseProperty(nameof(FmVehicle.FmVehicleCapacities))]
-        public virtual FmVehicle Vehicle { get; set; }
     }
 }

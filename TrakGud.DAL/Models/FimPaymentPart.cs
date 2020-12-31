@@ -23,9 +23,5 @@ namespace TrakGud.DAL.Models
         [Column("paymentPartType")]
         [StringLength(25)]
         public string PaymentPartType { get; set; }
-
-        [ForeignKey(nameof(PaymentPartType))]
-        [InverseProperty(nameof(FimPaymentPartType.FimPaymentParts))]
-        public virtual FimPaymentPartType PaymentPartTypeNavigation { get; set; }
     }
 }

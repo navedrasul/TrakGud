@@ -12,11 +12,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(BankId), Name = "fki_bankId_fkey")]
     public partial class FimBankBranch
     {
-        public FimBankBranch()
-        {
-            FimBankBranchPocs = new HashSet<FimBankBranchPoc>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -24,14 +19,5 @@ namespace TrakGud.DAL.Models
         public int BankId { get; set; }
         [Column("addressId")]
         public int AddressId { get; set; }
-
-        [ForeignKey(nameof(AddressId))]
-        [InverseProperty(nameof(CmAddress.FimBankBranches))]
-        public virtual CmAddress Address { get; set; }
-        [ForeignKey(nameof(BankId))]
-        [InverseProperty(nameof(FimBank.FimBankBranches))]
-        public virtual FimBank Bank { get; set; }
-        [InverseProperty(nameof(FimBankBranchPoc.BankBranch))]
-        public virtual ICollection<FimBankBranchPoc> FimBankBranchPocs { get; set; }
     }
 }

@@ -12,12 +12,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(PaymentId), Name = "fki_paymentId_fkey")]
     public partial class FimTransaction
     {
-        public FimTransaction()
-        {
-            DReceivedItemBatches = new HashSet<DReceivedItemBatch>();
-            FimTransactionItems = new HashSet<FimTransactionItem>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -45,30 +39,5 @@ namespace TrakGud.DAL.Models
         public DateTime? Ts { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.FimTransactionAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.FimTransactionModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(PaymentId))]
-        [InverseProperty(nameof(FimPayment.FimTransactions))]
-        public virtual FimPayment Payment { get; set; }
-        [ForeignKey(nameof(Rct))]
-        [InverseProperty(nameof(DRelativeCountryType.FimTransactions))]
-        public virtual DRelativeCountryType RctNavigation { get; set; }
-        [ForeignKey(nameof(Rst))]
-        [InverseProperty(nameof(DRelativeStateProvType.FimTransactions))]
-        public virtual DRelativeStateProvType RstNavigation { get; set; }
-        [ForeignKey(nameof(Type))]
-        [InverseProperty(nameof(FimTransactionType.FimTransactions))]
-        public virtual FimTransactionType TypeNavigation { get; set; }
-        [InverseProperty("IdNavigation")]
-        public virtual FimTransactionAmount FimTransactionAmount { get; set; }
-        [InverseProperty(nameof(DReceivedItemBatch.Transaction))]
-        public virtual ICollection<DReceivedItemBatch> DReceivedItemBatches { get; set; }
-        [InverseProperty(nameof(FimTransactionItem.Transaction))]
-        public virtual ICollection<FimTransactionItem> FimTransactionItems { get; set; }
     }
 }

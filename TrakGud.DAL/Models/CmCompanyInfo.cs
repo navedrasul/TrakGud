@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("cm__CompanyInfo")]
     public partial class CmCompanyInfo
     {
-        public CmCompanyInfo()
-        {
-            CmProfessionalInfos = new HashSet<CmProfessionalInfo>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -39,17 +34,5 @@ namespace TrakGud.DAL.Models
         [Column("name")]
         [StringLength(50)]
         public string Name { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.CmCompanyInfoAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.CmCompanyInfoModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(Type))]
-        [InverseProperty(nameof(CmContactType.CmCompanyInfos))]
-        public virtual CmContactType TypeNavigation { get; set; }
-        [InverseProperty(nameof(CmProfessionalInfo.CompanyInfo))]
-        public virtual ICollection<CmProfessionalInfo> CmProfessionalInfos { get; set; }
     }
 }

@@ -29,18 +29,5 @@ namespace TrakGud.DAL.Models
         public bool? IsRemoved { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.CmContactMergers))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(MainContactId))]
-        [InverseProperty(nameof(CmContact.CmContactMergerMainContacts))]
-        public virtual CmContact MainContact { get; set; }
-        [ForeignKey(nameof(MergedContactId))]
-        [InverseProperty(nameof(CmContact.CmContactMergerMergedContacts))]
-        public virtual CmContact MergedContact { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmRole.CmContactMergers))]
-        public virtual UmRole Modder { get; set; }
     }
 }

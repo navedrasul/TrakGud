@@ -33,18 +33,5 @@ namespace TrakGud.DAL.Models
         public int? ModderId { get; set; }
         [Column("isRemoved")]
         public bool? IsRemoved { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.HrmEmployeeOrganisationAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(EmployeeId))]
-        [InverseProperty(nameof(HrmEmployee.HrmEmployeeOrganisations))]
-        public virtual HrmEmployee Employee { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.HrmEmployeeOrganisationModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(OrganisationId))]
-        [InverseProperty(nameof(HrmOrganisation.HrmEmployeeOrganisations))]
-        public virtual HrmOrganisation Organisation { get; set; }
     }
 }

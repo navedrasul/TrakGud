@@ -38,21 +38,5 @@ namespace TrakGud.DAL.Models
         public int? ModderId { get; set; }
         [Column("isRemoved")]
         public bool? IsRemoved { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.CmPhoneAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(CityId))]
-        [InverseProperty(nameof(CmCity.CmPhones))]
-        public virtual CmCity City { get; set; }
-        [ForeignKey(nameof(ContactId))]
-        [InverseProperty(nameof(CmContact.CmPhones))]
-        public virtual CmContact Contact { get; set; }
-        [ForeignKey(nameof(FieldType))]
-        [InverseProperty(nameof(CmContactFieldType.CmPhones))]
-        public virtual CmContactFieldType FieldTypeNavigation { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.CmPhoneModders))]
-        public virtual UmUser Modder { get; set; }
     }
 }

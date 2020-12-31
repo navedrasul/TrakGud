@@ -25,15 +25,5 @@ namespace TrakGud.DAL.Models
         public float? MaxQty { get; set; }
         [Column("unitId")]
         public int UnitId { get; set; }
-
-        [ForeignKey(nameof(ProductId))]
-        [InverseProperty(nameof(DProduct.SProductOfferItems))]
-        public virtual DProduct Product { get; set; }
-        [ForeignKey(nameof(ProductOfferId))]
-        [InverseProperty(nameof(SProductOffer.SProductOfferItems))]
-        public virtual SProductOffer ProductOffer { get; set; }
-        [ForeignKey(nameof(UnitId))]
-        [InverseProperty(nameof(DProductUnit.SProductOfferItems))]
-        public virtual DProductUnit Unit { get; set; }
     }
 }

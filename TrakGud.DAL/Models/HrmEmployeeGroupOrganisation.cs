@@ -19,12 +19,5 @@ namespace TrakGud.DAL.Models
         [Key]
         [Column("organisationId")]
         public int OrganisationId { get; set; }
-
-        [ForeignKey(nameof(EmployeeGroupId))]
-        [InverseProperty(nameof(HrmEmployeeGroup.HrmEmployeeGroupOrganisations))]
-        public virtual HrmEmployeeGroup EmployeeGroup { get; set; }
-        [ForeignKey(nameof(OrganisationId))]
-        [InverseProperty(nameof(HrmOrganisation.HrmEmployeeGroupOrganisations))]
-        public virtual HrmOrganisation Organisation { get; set; }
     }
 }

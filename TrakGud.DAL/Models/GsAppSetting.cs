@@ -21,12 +21,5 @@ namespace TrakGud.DAL.Models
         [Column("defaultCurrencyId")]
         [StringLength(25)]
         public string DefaultCurrencyId { get; set; }
-
-        [ForeignKey(nameof(AppId))]
-        [InverseProperty(nameof(GsApp.GsAppSetting))]
-        public virtual GsApp App { get; set; }
-        [ForeignKey(nameof(DefaultCurrencyId))]
-        [InverseProperty(nameof(FimCurrency.GsAppSettings))]
-        public virtual FimCurrency DefaultCurrency { get; set; }
     }
 }

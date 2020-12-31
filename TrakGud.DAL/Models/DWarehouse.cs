@@ -12,11 +12,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(LocationId), Name = "fki_locationId_fkey")]
     public partial class DWarehouse
     {
-        public DWarehouse()
-        {
-            DProductWarehouseStocks = new HashSet<DProductWarehouseStock>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -30,17 +25,5 @@ namespace TrakGud.DAL.Models
         public int? ModderId { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.DWarehouseAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(LocationId))]
-        [InverseProperty(nameof(CmLocationInfo.DWarehouses))]
-        public virtual CmLocationInfo Location { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.DWarehouseModders))]
-        public virtual UmUser Modder { get; set; }
-        [InverseProperty(nameof(DProductWarehouseStock.Warehouse))]
-        public virtual ICollection<DProductWarehouseStock> DProductWarehouseStocks { get; set; }
     }
 }

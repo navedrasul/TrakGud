@@ -22,9 +22,5 @@ namespace TrakGud.DAL.Models
         public float? ReceivedAmt { get; set; }
         [Column("dueDate", TypeName = "timestamp with time zone")]
         public DateTime? DueDate { get; set; }
-
-        [ForeignKey(nameof(Type))]
-        [InverseProperty(nameof(FimPaymentType.FimCreditPayments))]
-        public virtual FimPaymentType TypeNavigation { get; set; }
     }
 }

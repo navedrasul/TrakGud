@@ -18,12 +18,5 @@ namespace TrakGud.DAL.Models
         [Key]
         [Column("contactId")]
         public int ContactId { get; set; }
-
-        [ForeignKey(nameof(BankBranchId))]
-        [InverseProperty(nameof(FimBankBranch.FimBankBranchPocs))]
-        public virtual FimBankBranch BankBranch { get; set; }
-        [ForeignKey(nameof(ContactId))]
-        [InverseProperty(nameof(CmContact.FimBankBranchPocs))]
-        public virtual CmContact Contact { get; set; }
     }
 }

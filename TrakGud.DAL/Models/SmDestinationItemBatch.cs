@@ -12,11 +12,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(ReceivedUnitId), Name = "fki_receivedUnitId_fkey")]
     public partial class SmDestinationItemBatch
     {
-        public SmDestinationItemBatch()
-        {
-            SmShipments = new HashSet<SmShipment>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -45,26 +40,5 @@ namespace TrakGud.DAL.Models
         public int? ReceivedUnitId { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.SmDestinationItemBatchAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ItemBatchType))]
-        [InverseProperty(nameof(DItemBatchType.SmDestinationItemBatches))]
-        public virtual DItemBatchType ItemBatchTypeNavigation { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.SmDestinationItemBatchModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(ProductId))]
-        [InverseProperty(nameof(DProduct.SmDestinationItemBatches))]
-        public virtual DProduct Product { get; set; }
-        [ForeignKey(nameof(ReceivedUnitId))]
-        [InverseProperty(nameof(DProductUnit.SmDestinationItemBatches))]
-        public virtual DProductUnit ReceivedUnit { get; set; }
-        [ForeignKey(nameof(SourceType))]
-        [InverseProperty(nameof(DItemBatchSourceType.SmDestinationItemBatches))]
-        public virtual DItemBatchSourceType SourceTypeNavigation { get; set; }
-        [InverseProperty(nameof(SmShipment.DestinationItemBatch))]
-        public virtual ICollection<SmShipment> SmShipments { get; set; }
     }
 }

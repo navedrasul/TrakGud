@@ -11,12 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("um__UserGroup")]
     public partial class UmUserGroup
     {
-        public UmUserGroup()
-        {
-            GsApps = new HashSet<GsApp>();
-            UmUserUserGroups = new HashSet<UmUserUserGroup>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -34,16 +28,5 @@ namespace TrakGud.DAL.Models
         public int? ModderId { get; set; }
         [Column("isRemoved")]
         public bool? IsRemoved { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.UmUserGroupAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.UmUserGroupModders))]
-        public virtual UmUser Modder { get; set; }
-        [InverseProperty(nameof(GsApp.UserGroup))]
-        public virtual ICollection<GsApp> GsApps { get; set; }
-        [InverseProperty(nameof(UmUserUserGroup.UserGroup))]
-        public virtual ICollection<UmUserUserGroup> UmUserUserGroups { get; set; }
     }
 }

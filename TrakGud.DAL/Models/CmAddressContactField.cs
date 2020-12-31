@@ -19,12 +19,5 @@ namespace TrakGud.DAL.Models
         [Key]
         [Column("contactFieldId")]
         public int ContactFieldId { get; set; }
-
-        [ForeignKey(nameof(AddressId))]
-        [InverseProperty(nameof(CmAddress.CmAddressContactFields))]
-        public virtual CmAddress Address { get; set; }
-        [ForeignKey(nameof(ContactFieldId))]
-        [InverseProperty(nameof(CmContactField.CmAddressContactFields))]
-        public virtual CmContactField ContactField { get; set; }
     }
 }

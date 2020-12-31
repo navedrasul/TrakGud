@@ -20,9 +20,5 @@ namespace TrakGud.DAL.Models
         public string Type { get; set; }
         [Column("receivedAmt")]
         public float ReceivedAmt { get; set; }
-
-        [ForeignKey(nameof(Type))]
-        [InverseProperty(nameof(FimPaymentType.FimCashPayments))]
-        public virtual FimPaymentType TypeNavigation { get; set; }
     }
 }

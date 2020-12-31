@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("um__Right")]
     public partial class UmRight
     {
-        public UmRight()
-        {
-            UmRightRightsSections = new HashSet<UmRightRightsSection>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -37,14 +32,5 @@ namespace TrakGud.DAL.Models
         public bool? IsRemoved { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.UmRightAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.UmRightModders))]
-        public virtual UmUser Modder { get; set; }
-        [InverseProperty(nameof(UmRightRightsSection.Right))]
-        public virtual ICollection<UmRightRightsSection> UmRightRightsSections { get; set; }
     }
 }

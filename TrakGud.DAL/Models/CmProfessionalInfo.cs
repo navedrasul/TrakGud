@@ -25,12 +25,5 @@ namespace TrakGud.DAL.Models
         public string MoreInfo { get; set; }
         [Column("companyInfoId")]
         public int? CompanyInfoId { get; set; }
-
-        [ForeignKey(nameof(CompanyInfoId))]
-        [InverseProperty(nameof(CmCompanyInfo.CmProfessionalInfos))]
-        public virtual CmCompanyInfo CompanyInfo { get; set; }
-        [ForeignKey(nameof(Id))]
-        [InverseProperty(nameof(CmContact.CmProfessionalInfo))]
-        public virtual CmContact IdNavigation { get; set; }
     }
 }

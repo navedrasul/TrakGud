@@ -17,12 +17,5 @@ namespace TrakGud.DAL.Models
         [Key]
         [Column("batchId")]
         public int BatchId { get; set; }
-
-        [ForeignKey(nameof(BatchId))]
-        [InverseProperty(nameof(DItemBatch.DItemItemBatches))]
-        public virtual DItemBatch Batch { get; set; }
-        [ForeignKey(nameof(ItemId))]
-        [InverseProperty(nameof(DItem.DItemItemBatches))]
-        public virtual DItem Item { get; set; }
     }
 }

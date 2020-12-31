@@ -21,12 +21,5 @@ namespace TrakGud.DAL.Models
         public int? UnitId { get; set; }
         [Column("productId")]
         public int ProductId { get; set; }
-
-        [ForeignKey(nameof(ProductId))]
-        [InverseProperty(nameof(DProduct.DProductStocks))]
-        public virtual DProduct Product { get; set; }
-        [ForeignKey(nameof(UnitId))]
-        [InverseProperty(nameof(DProductUnit.DProductStocks))]
-        public virtual DProductUnit Unit { get; set; }
     }
 }

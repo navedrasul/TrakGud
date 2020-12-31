@@ -20,12 +20,5 @@ namespace TrakGud.DAL.Models
         public int VehicleId { get; set; }
         [Column("assignmentTS", TypeName = "timestamp with time zone")]
         public DateTime? AssignmentTs { get; set; }
-
-        [ForeignKey(nameof(ShipmentId))]
-        [InverseProperty(nameof(SmShipment.SmShipmentVehicles))]
-        public virtual SmShipment Shipment { get; set; }
-        [ForeignKey(nameof(VehicleId))]
-        [InverseProperty(nameof(FmVehicle.SmShipmentVehicles))]
-        public virtual FmVehicle Vehicle { get; set; }
     }
 }

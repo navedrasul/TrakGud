@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("nm__NotificationCategory")]
     public partial class NmNotificationCategory
     {
-        public NmNotificationCategory()
-        {
-            NmNotificationNotificationCategories = new HashSet<NmNotificationNotificationCategory>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -23,10 +18,5 @@ namespace TrakGud.DAL.Models
         [Column("name")]
         [StringLength(50)]
         public string Name { get; set; }
-
-        [InverseProperty("IdNavigation")]
-        public virtual NmNotificationCategoryAgr NmNotificationCategoryAgr { get; set; }
-        [InverseProperty(nameof(NmNotificationNotificationCategory.NotificationCategory))]
-        public virtual ICollection<NmNotificationNotificationCategory> NmNotificationNotificationCategories { get; set; }
     }
 }

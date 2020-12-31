@@ -12,11 +12,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(IssuerContactId), Name = "fki_issuerContactId_fkey")]
     public partial class FimCheque
     {
-        public FimCheque()
-        {
-            FimChequePayments = new HashSet<FimChequePayment>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -45,14 +40,5 @@ namespace TrakGud.DAL.Models
         public float Amount { get; set; }
         [Column("bankId")]
         public int BankId { get; set; }
-
-        [ForeignKey(nameof(BankId))]
-        [InverseProperty(nameof(FimBank.FimCheques))]
-        public virtual FimBank Bank { get; set; }
-        [ForeignKey(nameof(IssuerContactId))]
-        [InverseProperty(nameof(CmContact.FimCheques))]
-        public virtual CmContact IssuerContact { get; set; }
-        [InverseProperty(nameof(FimChequePayment.Cheque))]
-        public virtual ICollection<FimChequePayment> FimChequePayments { get; set; }
     }
 }

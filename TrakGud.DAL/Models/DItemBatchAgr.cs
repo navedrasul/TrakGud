@@ -20,12 +20,5 @@ namespace TrakGud.DAL.Models
         public int? UnitId { get; set; }
         [Column("price")]
         public float? Price { get; set; }
-
-        [ForeignKey(nameof(Id))]
-        [InverseProperty(nameof(DItemBatch.DItemBatchAgr))]
-        public virtual DItemBatch IdNavigation { get; set; }
-        [ForeignKey(nameof(UnitId))]
-        [InverseProperty(nameof(DProductUnit.DItemBatchAgrs))]
-        public virtual DProductUnit Unit { get; set; }
     }
 }

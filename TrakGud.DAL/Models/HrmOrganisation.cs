@@ -11,12 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("hrm__Organisation")]
     public partial class HrmOrganisation
     {
-        public HrmOrganisation()
-        {
-            HrmEmployeeGroupOrganisations = new HashSet<HrmEmployeeGroupOrganisation>();
-            HrmEmployeeOrganisations = new HashSet<HrmEmployeeOrganisation>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -39,16 +33,5 @@ namespace TrakGud.DAL.Models
         public int? ModderId { get; set; }
         [Column("isRemoved")]
         public bool? IsRemoved { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.HrmOrganisationAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.HrmOrganisationModders))]
-        public virtual UmUser Modder { get; set; }
-        [InverseProperty(nameof(HrmEmployeeGroupOrganisation.Organisation))]
-        public virtual ICollection<HrmEmployeeGroupOrganisation> HrmEmployeeGroupOrganisations { get; set; }
-        [InverseProperty(nameof(HrmEmployeeOrganisation.Organisation))]
-        public virtual ICollection<HrmEmployeeOrganisation> HrmEmployeeOrganisations { get; set; }
     }
 }

@@ -17,12 +17,5 @@ namespace TrakGud.DAL.Models
         public int UserId { get; set; }
         [Column("currentThemeId")]
         public int? CurrentThemeId { get; set; }
-
-        [ForeignKey(nameof(CurrentThemeId))]
-        [InverseProperty(nameof(GsTheme.GsUserSettings))]
-        public virtual GsTheme CurrentTheme { get; set; }
-        [ForeignKey(nameof(UserId))]
-        [InverseProperty(nameof(UmUser.GsUserSetting))]
-        public virtual UmUser User { get; set; }
     }
 }

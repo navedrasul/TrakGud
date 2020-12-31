@@ -19,12 +19,5 @@ namespace TrakGud.DAL.Models
         [Key]
         [Column("continentId")]
         public int ContinentId { get; set; }
-
-        [ForeignKey(nameof(ContinentId))]
-        [InverseProperty(nameof(CmContinent.CmCountryContinents))]
-        public virtual CmContinent Continent { get; set; }
-        [ForeignKey(nameof(CountryId))]
-        [InverseProperty(nameof(CmCountry.CmCountryContinents))]
-        public virtual CmCountry Country { get; set; }
     }
 }

@@ -30,15 +30,5 @@ namespace TrakGud.DAL.Models
         public DateTime? ModTs { get; set; }
         [Column("TS", TypeName = "timestamp with time zone")]
         public DateTime? Ts { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.DCommentAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(CommentsThreadId))]
-        [InverseProperty(nameof(DCommentsThread.DComments))]
-        public virtual DCommentsThread CommentsThread { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.DCommentModders))]
-        public virtual UmUser Modder { get; set; }
     }
 }

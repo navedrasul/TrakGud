@@ -35,15 +35,5 @@ namespace TrakGud.DAL.Models
         public int RoleId { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.UmRoleRightAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.UmRoleRightModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(RoleId))]
-        [InverseProperty(nameof(UmRole.UmRoleRights))]
-        public virtual UmRole Role { get; set; }
     }
 }

@@ -13,11 +13,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(FieldType), Name = "fki_fieldType_fkey")]
     public partial class CmContactField
     {
-        public CmContactField()
-        {
-            CmAddressContactFields = new HashSet<CmAddressContactField>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -40,20 +35,5 @@ namespace TrakGud.DAL.Models
         public int? ModderId { get; set; }
         [Column("isRemoved")]
         public bool? IsRemoved { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.CmContactFieldAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ContactId))]
-        [InverseProperty(nameof(CmContact.CmContactFields))]
-        public virtual CmContact Contact { get; set; }
-        [ForeignKey(nameof(FieldType))]
-        [InverseProperty(nameof(CmContactFieldType.CmContactFields))]
-        public virtual CmContactFieldType FieldTypeNavigation { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.CmContactFieldModders))]
-        public virtual UmUser Modder { get; set; }
-        [InverseProperty(nameof(CmAddressContactField.ContactField))]
-        public virtual ICollection<CmAddressContactField> CmAddressContactFields { get; set; }
     }
 }

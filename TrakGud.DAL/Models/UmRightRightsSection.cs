@@ -19,12 +19,5 @@ namespace TrakGud.DAL.Models
         [Key]
         [Column("rightsSectionId")]
         public int RightsSectionId { get; set; }
-
-        [ForeignKey(nameof(RightId))]
-        [InverseProperty(nameof(UmRight.UmRightRightsSections))]
-        public virtual UmRight Right { get; set; }
-        [ForeignKey(nameof(RightsSectionId))]
-        [InverseProperty(nameof(UmRightsSection.UmRightRightsSections))]
-        public virtual UmRightsSection RightsSection { get; set; }
     }
 }

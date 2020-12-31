@@ -22,9 +22,5 @@ namespace TrakGud.DAL.Models
         [Column("name")]
         [StringLength(50)]
         public string Name { get; set; }
-
-        [ForeignKey(nameof(LocationId))]
-        [InverseProperty(nameof(CmLocationInfo.SShops))]
-        public virtual CmLocationInfo Location { get; set; }
     }
 }

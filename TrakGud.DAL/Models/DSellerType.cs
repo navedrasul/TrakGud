@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("d__SellerType")]
     public partial class DSellerType
     {
-        public DSellerType()
-        {
-            DSellers = new HashSet<DSeller>();
-        }
-
         [Key]
         [Column("value")]
         [StringLength(25)]
@@ -24,8 +19,5 @@ namespace TrakGud.DAL.Models
         [Column("text")]
         [StringLength(25)]
         public string Text { get; set; }
-
-        [InverseProperty(nameof(DSeller.SellerTypeNavigation))]
-        public virtual ICollection<DSeller> DSellers { get; set; }
     }
 }

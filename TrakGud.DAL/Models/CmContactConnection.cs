@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TrakGud.DAL.Models
 {
-    [Keyless]
     [Table("cm__ContactConnection")]
     public partial class CmContactConnection
     {
+        [Key]
         [Column("id")]
         public int Id { get; set; }
         [Required]
@@ -39,16 +39,5 @@ namespace TrakGud.DAL.Models
         public int? ModderId { get; set; }
         [Column("isRemoved")]
         public bool? IsRemoved { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ConnectionId))]
-        public virtual CmContact Connection { get; set; }
-        [ForeignKey(nameof(FieldType))]
-        public virtual CmContactFieldType FieldTypeNavigation { get; set; }
-        [ForeignKey(nameof(Id))]
-        public virtual CmContactField IdNavigation { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        public virtual UmUser Modder { get; set; }
     }
 }

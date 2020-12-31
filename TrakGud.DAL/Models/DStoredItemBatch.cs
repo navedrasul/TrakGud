@@ -38,24 +38,5 @@ namespace TrakGud.DAL.Models
         public int ProductWarehouseStockId { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.DStoredItemBatchAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(ItemBatchType))]
-        [InverseProperty(nameof(DItemBatchType.DStoredItemBatches))]
-        public virtual DItemBatchType ItemBatchTypeNavigation { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.DStoredItemBatchModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(ProductId))]
-        [InverseProperty(nameof(DProduct.DStoredItemBatches))]
-        public virtual DProduct Product { get; set; }
-        [ForeignKey(nameof(ProductWarehouseStockId))]
-        [InverseProperty(nameof(DProductWarehouseStock.DStoredItemBatches))]
-        public virtual DProductWarehouseStock ProductWarehouseStock { get; set; }
-        [ForeignKey(nameof(SourceType))]
-        [InverseProperty(nameof(DItemBatchSourceType.DStoredItemBatches))]
-        public virtual DItemBatchSourceType SourceTypeNavigation { get; set; }
     }
 }

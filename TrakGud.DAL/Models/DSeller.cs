@@ -12,11 +12,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(SellerType), Name = "fki_sellerType_fkey")]
     public partial class DSeller
     {
-        public DSeller()
-        {
-            DReceivedItemBatches = new HashSet<DReceivedItemBatch>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -46,29 +41,5 @@ namespace TrakGud.DAL.Models
         [Column("sellerType")]
         [StringLength(25)]
         public string SellerType { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.DSellerAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(CommentsThreadId))]
-        [InverseProperty(nameof(DCommentsThread.DSellers))]
-        public virtual DCommentsThread CommentsThread { get; set; }
-        [ForeignKey(nameof(ContactId))]
-        [InverseProperty(nameof(CmContact.DSellers))]
-        public virtual CmContact Contact { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.DSellerModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(Rct))]
-        [InverseProperty(nameof(DRelativeCountryType.DSellers))]
-        public virtual DRelativeCountryType RctNavigation { get; set; }
-        [ForeignKey(nameof(Rst))]
-        [InverseProperty(nameof(DRelativeStateProvType.DSellers))]
-        public virtual DRelativeStateProvType RstNavigation { get; set; }
-        [ForeignKey(nameof(SellerType))]
-        [InverseProperty(nameof(DSellerType.DSellers))]
-        public virtual DSellerType SellerTypeNavigation { get; set; }
-        [InverseProperty(nameof(DReceivedItemBatch.Seller))]
-        public virtual ICollection<DReceivedItemBatch> DReceivedItemBatches { get; set; }
     }
 }

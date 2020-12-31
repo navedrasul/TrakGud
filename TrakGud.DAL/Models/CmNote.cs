@@ -16,9 +16,5 @@ namespace TrakGud.DAL.Models
         public int Id { get; set; }
         [Column("text")]
         public string Text { get; set; }
-
-        [ForeignKey(nameof(Id))]
-        [InverseProperty(nameof(CmContact.CmNote))]
-        public virtual CmContact IdNavigation { get; set; }
     }
 }

@@ -13,13 +13,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(VehicleType), Name = "fki_vehicleType_fkey")]
     public partial class FmVehicle
     {
-        public FmVehicle()
-        {
-            FmVehicleCapacities = new HashSet<FmVehicleCapacity>();
-            SmShipmentVehicles = new HashSet<SmShipmentVehicle>();
-            SmShippedItemBatches = new HashSet<SmShippedItemBatch>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -57,29 +50,5 @@ namespace TrakGud.DAL.Models
         [Column("vehicleType")]
         [StringLength(25)]
         public string VehicleType { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.FmVehicleAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(Id))]
-        [InverseProperty(nameof(CmContact.FmVehicle))]
-        public virtual CmContact IdNavigation { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.FmVehicleModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(Status))]
-        [InverseProperty(nameof(FmVehicleStatus.FmVehicles))]
-        public virtual FmVehicleStatus StatusNavigation { get; set; }
-        [ForeignKey(nameof(VehicleType))]
-        [InverseProperty(nameof(FmVehicleType.FmVehicles))]
-        public virtual FmVehicleType VehicleTypeNavigation { get; set; }
-        [InverseProperty("IdNavigation")]
-        public virtual FmVehicleLocation FmVehicleLocation { get; set; }
-        [InverseProperty(nameof(FmVehicleCapacity.Vehicle))]
-        public virtual ICollection<FmVehicleCapacity> FmVehicleCapacities { get; set; }
-        [InverseProperty(nameof(SmShipmentVehicle.Vehicle))]
-        public virtual ICollection<SmShipmentVehicle> SmShipmentVehicles { get; set; }
-        [InverseProperty(nameof(SmShippedItemBatch.Vehicle))]
-        public virtual ICollection<SmShippedItemBatch> SmShippedItemBatches { get; set; }
     }
 }

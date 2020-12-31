@@ -11,13 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("cm__ContactType")]
     public partial class CmContactType
     {
-        public CmContactType()
-        {
-            CmCompanyInfos = new HashSet<CmCompanyInfo>();
-            CmContacts = new HashSet<CmContact>();
-            CmLocationInfos = new HashSet<CmLocationInfo>();
-        }
-
         [Key]
         [Column("value")]
         [StringLength(25)]
@@ -26,12 +19,5 @@ namespace TrakGud.DAL.Models
         [Column("text")]
         [StringLength(25)]
         public string Text { get; set; }
-
-        [InverseProperty(nameof(CmCompanyInfo.TypeNavigation))]
-        public virtual ICollection<CmCompanyInfo> CmCompanyInfos { get; set; }
-        [InverseProperty(nameof(CmContact.TypeNavigation))]
-        public virtual ICollection<CmContact> CmContacts { get; set; }
-        [InverseProperty(nameof(CmLocationInfo.TypeNavigation))]
-        public virtual ICollection<CmLocationInfo> CmLocationInfos { get; set; }
     }
 }

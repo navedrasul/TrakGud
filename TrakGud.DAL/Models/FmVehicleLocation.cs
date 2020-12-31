@@ -18,9 +18,5 @@ namespace TrakGud.DAL.Models
         public float? Latitude { get; set; }
         [Column("longitude")]
         public float? Longitude { get; set; }
-
-        [ForeignKey(nameof(Id))]
-        [InverseProperty(nameof(FmVehicle.FmVehicleLocation))]
-        public virtual FmVehicle IdNavigation { get; set; }
     }
 }

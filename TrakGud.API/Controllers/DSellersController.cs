@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TrakGud.API.Models;
+using TrakGud.API.UItils;
 using TrakGud.DAL.Models;
 using TrakGud.DAL.Repos;
 
@@ -21,12 +24,147 @@ namespace TrakGud.API.Controllers
             _context = context;
         }
 
+        // -----------------> Implementation with API Model.
+
         // GET: api/DSellers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DSeller>>> GetDSellers()
+        public async Task<ActionResult<IEnumerable<ApiDSeller>>> GetDSellers(
+            string filter = null,
+            int? count = null,
+            bool? withContact = null
+            )
         {
-            return await _context.DSellers.ToListAsync();
+            IQueryable<DSeller> sellers;
+
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                sellers = _context.DSellers;
+                //.ToListAsync();
+            }
+            else
+            {
+                // Convert the filter-key to the "LOWER CASE".
+                filter = filter.ToLower();
+
+                sellers = _context.DSellers
+                                .Where(s =>
+                                    s.Name.ToLower().Contains(filter) ||
+                                    _context.CmCompanyInfos.First(c => c.Id == s.ContactId).Name.ToLower().Contains(filter)
+                                    );
+                //.ToListAsync<DSeller>();
+            }
+
+            if (sellers == null)
+            {
+                return NotFound();
+            }
+
+            // Only take the first count records.
+            sellers = sellers.Take(count ?? int.MaxValue);
+
+            // Order by name.
+            sellers = sellers.OrderBy(s => s.Name);
+
+            // Convert to List.
+            List<DSeller> sellersList = await sellers.ToListAsync<DSeller>();
+
+            // Create the response objects.
+            List<ApiDSeller> res = new List<ApiDSeller>();
+
+            // Add associated objects.
+
+            foreach (DSeller seller in sellersList)
+            {
+                ApiDSeller resSeller = new ApiDSeller() {
+                    seller = seller
+                };
+
+                // Add associated CmCompanyInfo objects.
+
+                if (withContact ?? false)
+                {
+                    resSeller.companyInfo = _context.CmCompanyInfos.First(ci => ci.Id == seller.ContactId);
+                }
+
+                res.Add(resSeller);
+            }
+
+            return res;
         }
+
+        // -----------------> Implementation without params
+
+        //// GET: api/DSellers
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<DSeller>>> GetDSellers()
+        //{
+        //    return await _context.DSellers.ToListAsync();
+        //}
+
+        // -----------------> Implementation with ExpandoObject
+
+        //// GET: api/DSellers
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<ExpandoObject>>> GetDSellers(
+        //    string filter = null,
+        //    int? count = null,
+        //    bool? withContact = null
+        //    )
+        //{
+        //    IQueryable<DSeller> sellers;
+
+        //    if (string.IsNullOrWhiteSpace(filter))
+        //    {
+        //        sellers = _context.DSellers;
+        //        //.ToListAsync();
+        //    }
+        //    else
+        //    {
+        //        // Convert the filter-key to the "LOWER CASE".
+        //        filter = filter.ToLower();
+
+        //        sellers = _context.DSellers
+        //                        .Where(s =>
+        //                            s.Name.ToLower().Contains(filter) ||
+        //                            _context.CmCompanyInfos.First(c => c.Id == s.ContactId).Name.ToLower().Contains(filter)
+        //                            )
+        //                        .Take(count ?? int.MaxValue);
+        //                        //.ToListAsync<DSeller>();
+        //    }
+
+        //    if (sellers == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    // Order by name.
+
+        //    sellers = sellers.OrderBy(s => s.Name);
+
+        //    // Convert to List.
+
+        //    List<DSeller> sellersList = await sellers.ToListAsync<DSeller>();
+
+        //    // Add associated objects by converting to ExpandoObject.
+
+        //    List<ExpandoObject> res = new List<ExpandoObject>();
+
+        //    foreach (DSeller seller in sellersList)
+        //    {
+        //        dynamic eo = TypeConverter.dtoToExpando<DSeller>(seller);
+
+        //        // Add associated CmCompanyInfo objects.
+
+        //        if (withContact ?? false)
+        //        {
+        //            eo.Contact = _context.CmCompanyInfos.First(ci => ci.Id == seller.ContactId);
+        //        }
+
+        //        res.Add(eo);
+        //    }
+
+        //    return res;
+        //}
 
         // GET: api/DSellers/5
         [HttpGet("{id}")]

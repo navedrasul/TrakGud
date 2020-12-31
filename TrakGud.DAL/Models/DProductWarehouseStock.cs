@@ -12,11 +12,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(WarehouseId), Name = "fki_warehouseId_fkey")]
     public partial class DProductWarehouseStock
     {
-        public DProductWarehouseStock()
-        {
-            DStoredItemBatches = new HashSet<DStoredItemBatch>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -28,17 +23,5 @@ namespace TrakGud.DAL.Models
         public int WarehouseId { get; set; }
         [Column("productId")]
         public int ProductId { get; set; }
-
-        [ForeignKey(nameof(ProductId))]
-        [InverseProperty(nameof(DProduct.DProductWarehouseStocks))]
-        public virtual DProduct Product { get; set; }
-        [ForeignKey(nameof(UnitId))]
-        [InverseProperty(nameof(DProductUnit.DProductWarehouseStocks))]
-        public virtual DProductUnit Unit { get; set; }
-        [ForeignKey(nameof(WarehouseId))]
-        [InverseProperty(nameof(DWarehouse.DProductWarehouseStocks))]
-        public virtual DWarehouse Warehouse { get; set; }
-        [InverseProperty(nameof(DStoredItemBatch.ProductWarehouseStock))]
-        public virtual ICollection<DStoredItemBatch> DStoredItemBatches { get; set; }
     }
 }

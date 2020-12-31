@@ -11,13 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("d__CommentsThread")]
     public partial class DCommentsThread
     {
-        public DCommentsThread()
-        {
-            DBuyers = new HashSet<DBuyer>();
-            DComments = new HashSet<DComment>();
-            DSellers = new HashSet<DSeller>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -25,12 +18,5 @@ namespace TrakGud.DAL.Models
         public bool? IsVisible { get; set; }
         [Column("isBlocked")]
         public bool? IsBlocked { get; set; }
-
-        [InverseProperty(nameof(DBuyer.CommentsThread))]
-        public virtual ICollection<DBuyer> DBuyers { get; set; }
-        [InverseProperty(nameof(DComment.CommentsThread))]
-        public virtual ICollection<DComment> DComments { get; set; }
-        [InverseProperty(nameof(DSeller.CommentsThread))]
-        public virtual ICollection<DSeller> DSellers { get; set; }
     }
 }

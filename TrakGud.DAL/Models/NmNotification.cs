@@ -13,11 +13,6 @@ namespace TrakGud.DAL.Models
     [Index(nameof(NotificationSourceType), Name = "fki_notificationSourceType_fkey")]
     public partial class NmNotification
     {
-        public NmNotification()
-        {
-            NmNotificationNotificationCategories = new HashSet<NmNotificationNotificationCategory>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -45,14 +40,5 @@ namespace TrakGud.DAL.Models
         public DateTime? ExpTs { get; set; }
         [Column("sourceId")]
         public int? SourceId { get; set; }
-
-        [ForeignKey(nameof(DeletorId))]
-        [InverseProperty(nameof(UmUser.NmNotifications))]
-        public virtual UmUser Deletor { get; set; }
-        [ForeignKey(nameof(NotificationSourceType))]
-        [InverseProperty(nameof(NmNotificationSourceType.NmNotifications))]
-        public virtual NmNotificationSourceType NotificationSourceTypeNavigation { get; set; }
-        [InverseProperty(nameof(NmNotificationNotificationCategory.Notification))]
-        public virtual ICollection<NmNotificationNotificationCategory> NmNotificationNotificationCategories { get; set; }
     }
 }

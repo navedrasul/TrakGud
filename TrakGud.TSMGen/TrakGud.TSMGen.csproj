@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TrakGud.API\TrakGud.API.csproj" />
     <ProjectReference Include="..\TrakGud.DAL\TrakGud.DAL.csproj" />
   </ItemGroup>
 

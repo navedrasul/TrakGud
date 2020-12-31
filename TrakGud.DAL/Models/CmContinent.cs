@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("cm__Continent")]
     public partial class CmContinent
     {
-        public CmContinent()
-        {
-            CmCountryContinents = new HashSet<CmCountryContinent>();
-        }
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -23,8 +18,5 @@ namespace TrakGud.DAL.Models
         [Column("name")]
         [StringLength(25)]
         public string Name { get; set; }
-
-        [InverseProperty(nameof(CmCountryContinent.Continent))]
-        public virtual ICollection<CmCountryContinent> CmCountryContinents { get; set; }
     }
 }

@@ -22,9 +22,5 @@ namespace TrakGud.DAL.Models
         public int? Expired { get; set; }
         [Column("deleted")]
         public int? Deleted { get; set; }
-
-        [ForeignKey(nameof(Id))]
-        [InverseProperty(nameof(NmNotificationCategory.NmNotificationCategoryAgr))]
-        public virtual NmNotificationCategory IdNavigation { get; set; }
     }
 }

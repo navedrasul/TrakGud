@@ -44,27 +44,5 @@ namespace TrakGud.DAL.Models
         public string Rst { get; set; }
         [Column("modTS", TypeName = "timestamp with time zone")]
         public DateTime? ModTs { get; set; }
-
-        [ForeignKey(nameof(AdderId))]
-        [InverseProperty(nameof(UmUser.DBuyerAdders))]
-        public virtual UmUser Adder { get; set; }
-        [ForeignKey(nameof(BuyerType))]
-        [InverseProperty(nameof(DBuyerType.DBuyers))]
-        public virtual DBuyerType BuyerTypeNavigation { get; set; }
-        [ForeignKey(nameof(CommentsThreadId))]
-        [InverseProperty(nameof(DCommentsThread.DBuyers))]
-        public virtual DCommentsThread CommentsThread { get; set; }
-        [ForeignKey(nameof(ContactId))]
-        [InverseProperty(nameof(CmContact.DBuyers))]
-        public virtual CmContact Contact { get; set; }
-        [ForeignKey(nameof(ModderId))]
-        [InverseProperty(nameof(UmUser.DBuyerModders))]
-        public virtual UmUser Modder { get; set; }
-        [ForeignKey(nameof(Rct))]
-        [InverseProperty(nameof(DRelativeCountryType.DBuyers))]
-        public virtual DRelativeCountryType RctNavigation { get; set; }
-        [ForeignKey(nameof(Rst))]
-        [InverseProperty(nameof(DRelativeStateProvType.DBuyers))]
-        public virtual DRelativeStateProvType RstNavigation { get; set; }
     }
 }

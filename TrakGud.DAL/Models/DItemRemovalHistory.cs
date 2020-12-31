@@ -18,12 +18,5 @@ namespace TrakGud.DAL.Models
         public int RemoverId { get; set; }
         [Column("TS", TypeName = "timestamp with time zone")]
         public DateTime? Ts { get; set; }
-
-        [ForeignKey(nameof(ItemId))]
-        [InverseProperty(nameof(DItem.DItemRemovalHistory))]
-        public virtual DItem Item { get; set; }
-        [ForeignKey(nameof(RemoverId))]
-        [InverseProperty(nameof(UmUser.DItemRemovalHistories))]
-        public virtual UmUser Remover { get; set; }
     }
 }

@@ -17,12 +17,5 @@ namespace TrakGud.DAL.Models
         [Key]
         [Column("notificationCategoryId")]
         public int NotificationCategoryId { get; set; }
-
-        [ForeignKey(nameof(NotificationId))]
-        [InverseProperty(nameof(NmNotification.NmNotificationNotificationCategories))]
-        public virtual NmNotification Notification { get; set; }
-        [ForeignKey(nameof(NotificationCategoryId))]
-        [InverseProperty(nameof(NmNotificationCategory.NmNotificationNotificationCategories))]
-        public virtual NmNotificationCategory NotificationCategory { get; set; }
     }
 }

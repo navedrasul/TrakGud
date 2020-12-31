@@ -23,12 +23,5 @@ namespace TrakGud.DAL.Models
         public bool? IsBounced { get; set; }
         [Column("chequeId")]
         public int ChequeId { get; set; }
-
-        [ForeignKey(nameof(ChequeId))]
-        [InverseProperty(nameof(FimCheque.FimChequePayments))]
-        public virtual FimCheque Cheque { get; set; }
-        [ForeignKey(nameof(Type))]
-        [InverseProperty(nameof(FimPaymentType.FimChequePayments))]
-        public virtual FimPaymentType TypeNavigation { get; set; }
     }
 }

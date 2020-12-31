@@ -11,11 +11,6 @@ namespace TrakGud.DAL.Models
     [Table("gs__AppType")]
     public partial class GsAppType
     {
-        public GsAppType()
-        {
-            GsApps = new HashSet<GsApp>();
-        }
-
         [Key]
         [Column("value")]
         [StringLength(25)]
@@ -24,8 +19,5 @@ namespace TrakGud.DAL.Models
         [Column("text")]
         [StringLength(25)]
         public string Text { get; set; }
-
-        [InverseProperty(nameof(GsApp.AppTypeNavigation))]
-        public virtual ICollection<GsApp> GsApps { get; set; }
     }
 }
