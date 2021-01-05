@@ -23,9 +23,18 @@ namespace TrakGud.API.Controllers
 
         // GET: api/DProductUnits
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DProductUnit>>> GetDProductUnits()
+        public async Task<ActionResult<IEnumerable<DProductUnit>>> GetDProductUnits(
+            int? prodId = null
+            )
         {
-            return await _context.DProductUnits.ToListAsync();
+            if (prodId.HasValue)
+            {
+                return await _context.DProductUnits.Where(pu => pu.ProductId == prodId).ToListAsync();
+            }
+            else
+            {
+                return await _context.DProductUnits.ToListAsync();
+            }
         }
 
         // GET: api/DProductUnits/5

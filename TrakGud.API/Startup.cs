@@ -18,7 +18,7 @@ namespace TrakGud.API
     public class Startup
     {
         readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-        
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -38,13 +38,15 @@ namespace TrakGud.API
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:4200");
+                                      builder.WithOrigins("http://localhost:4200")
+                                      .AllowAnyHeader();
                                       //builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                                   });
             });
 
             services.AddMvc()
-             .AddJsonOptions(options => {
+             .AddJsonOptions(options =>
+             {
                  options.JsonSerializerOptions.IgnoreNullValues = true;
              });
 
