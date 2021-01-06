@@ -24,13 +24,21 @@ namespace TrakGud.API.Controllers
             _context = context;
         }
 
-        // -----------------> Implementation with API Model.
-
+        /// <summary>
+        /// ...
+        /// </summary>
+        /// <param name="count"></param>
+        /// <param name="mode">values: txt, edit</param>
+        /// <returns>
+        ///     <para>An array of Items with each item fulfilling the following conditions.</para>
+        ///     <para>if mode is null, entire item is initialised.</para>
+        ///     <para>if mode is txt, entire item, and single element arrays of Products and ProductUnits are initialised with Id and Name values.\</para>
+        /// </returns>
         // GET: api/DItems
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ApiDItem>>> GetDItems(
             int? count = null,
-            bool? withTxt = null
+            string mode = null
             )
         {
             IQueryable<DItem> items;
@@ -46,28 +54,44 @@ namespace TrakGud.API.Controllers
             items = items.Take(count ?? int.MaxValue);
 
             // Convert to List.
-            List<DItem> sellersList = await items.ToListAsync<DItem>();
+            List<DItem> itemsList = await items.ToListAsync<DItem>();
 
             // Add associated objects by converting to ExpandoObject.
 
             List<ApiDItem> res = new List<ApiDItem>();
 
-            foreach (DItem item in sellersList)
+            foreach (DItem item in itemsList)
             {
                 ApiDItem resItem = new ApiDItem()
                 {
-                    item = item
+                    Item = item
                 };
 
-                // Add associated text fields.
+                const string withText = "txt";
 
-                if (withTxt ?? false)
+                switch (mode)
                 {
-                    resItem.product = new DProduct();
-                    resItem.product.Name = _context.DProducts.First(p => p.Id == item.ProdId).Name;
+                    case withText:
+                        // Add associated text fields.
 
-                    resItem.productUnit = new DProductUnit();
-                    resItem.productUnit.Name = _context.DProductUnits.First(pu => pu.Id == item.UnitId).Name;
+                        var product = new DProduct
+                        {
+                            Name = _context.DProducts.First(p => p.Id == item.ProdId).Name
+                        };
+                        resItem.Products = new List<DProduct>
+                        {
+                            product
+                        };
+
+                        var productUnit = new DProductUnit
+                        {
+                            Name = _context.DProductUnits.First(pu => pu.Id == item.UnitId).Name
+                        };
+                        resItem.ProductUnits = new List<DProductUnit>
+                        {
+                            productUnit
+                        };
+                        break;
                 }
 
                 res.Add(resItem);
@@ -76,20 +100,21 @@ namespace TrakGud.API.Controllers
             return res;
         }
 
-        // -----------------> Implementation without params
-
-        //// GET: api/DItems
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<DItem>>> GetDItems()
-        //{
-        //    return await _context.DItems.ToListAsync();
-        //}
-
+        /// <summary>
+        /// ...
+        /// </summary>
+        /// <param name="id">Item-ID</param>
+        /// <param name="mode">values: txt, edit</param>
+        /// <returns>
+        ///     <para>if mode is null, entire item is initialised.</para>
+        ///     <para>if mode is txt, entire item, and single element arrays of Products and ProductUnits are initialised with Id and Name values.\</para>
+        ///     <para>if mode is edit, entire item, and entire array of Products and selective array of ProductUnits (for the given prodId) are initialised with Id and Name values.</para>
+        /// </returns>
         // GET: api/DItems/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ApiDItem>> GetDItem(
             int id,
-            bool? withProduct = false
+            string mode = null
             )
         {
             // TODO: !!! Following is test-code and should be removed after testing
@@ -103,12 +128,56 @@ namespace TrakGud.API.Controllers
             }
 
             // Create the response object.
-            ApiDItem resItem = new ApiDItem
+            ApiDItem resItem = new ApiDItem()
             {
-                // Add associated objects.
-                item = item,
-                product = _context.DProducts.First(p => p.Id == item.ProdId)
+                Item = item
             };
+
+            const string withText = "txt";
+            const string forEdit = "edit";
+
+            switch (mode)
+            {
+                case withText:
+                    // Add associated text fields.
+
+                    var product = new DProduct
+                    {
+                        Name = _context.DProducts.First(p => p.Id == item.ProdId).Name
+                    };
+                    resItem.Products = new List<DProduct>
+                        {
+                            product
+                        };
+
+                    var productUnit = new DProductUnit
+                    {
+                        Name = _context.DProductUnits.First(pu => pu.Id == item.UnitId).Name
+                    };
+                    resItem.ProductUnits = new List<DProductUnit>
+                        {
+                            productUnit
+                        };
+                    break;
+
+                case forEdit:
+                    // Add fields for Item editing.
+
+                    resItem.Products = _context.DProducts.Select(p => new DProduct
+                    {
+                        Id = p.Id,
+                        Name = p.Name
+                    }).ToList();
+
+                    resItem.ProductUnits = _context.DProductUnits
+                        .Where(pu => pu.ProductId == resItem.Item.ProdId)
+                        .Select(pu => new DProductUnit
+                        {
+                            Id = pu.Id,
+                            Name = pu.Name
+                        }).ToList();
+                    break;
+            }
 
             return resItem;
         }

@@ -76,14 +76,14 @@ namespace TrakGud.API.Controllers
             foreach (DSeller seller in sellersList)
             {
                 ApiDSeller resSeller = new ApiDSeller() {
-                    seller = seller
+                    Seller = seller
                 };
 
                 // Add associated CmCompanyInfo objects.
 
                 if (withContact ?? false)
                 {
-                    resSeller.companyInfo = _context.CmCompanyInfos.First(ci => ci.Id == seller.ContactId);
+                    resSeller.CompanyInfo = _context.CmCompanyInfos.First(ci => ci.Id == seller.ContactId);
                 }
 
                 res.Add(resSeller);
