@@ -39,6 +39,7 @@ namespace TrakGud.API
                                   builder =>
                                   {
                                       builder.WithOrigins("http://localhost:4200")
+                                      .AllowAnyMethod()
                                       .AllowAnyHeader();
                                       //builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                                   });
