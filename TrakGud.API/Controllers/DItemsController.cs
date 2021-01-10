@@ -193,7 +193,13 @@ namespace TrakGud.API.Controllers
                 return BadRequest();
             }
 
+            // Todo: Replace the dummy values with the real ones.
+            dItem.ModderId = 1;
+            dItem.ModTs = new DateTime();
+
             _context.Entry(dItem).State = EntityState.Modified;
+            _context.Entry(dItem).Property(x => x.AdderId).IsModified = false;
+            _context.Entry(dItem).Property(x => x.AddTs).IsModified = false;
 
             try
             {
@@ -220,6 +226,10 @@ namespace TrakGud.API.Controllers
         [HttpPost]
         public async Task<ActionResult<DItem>> PostDItem(DItem dItem)
         {
+            // Todo: Replace the dummy values with the real ones.
+            dItem.AdderId = 1;
+            dItem.AddTs = new DateTime();
+
             _context.DItems.Add(dItem);
             await _context.SaveChangesAsync();
 
@@ -235,6 +245,8 @@ namespace TrakGud.API.Controllers
             {
                 return NotFound();
             }
+
+            // Todo: Copy the dItem to the Archive DB.
 
             _context.DItems.Remove(dItem);
             await _context.SaveChangesAsync();
