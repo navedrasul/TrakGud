@@ -59,11 +59,9 @@ namespace TrakGud.API.Controllers
                 return NotFound();
             }
 
-            // Only take the first count records.
-            sellers = sellers.Take(count ?? int.MaxValue);
-
-            // Order by name.
-            sellers = sellers.OrderBy(s => s.Name);
+            // Order by name. Then take the first 'count' number of records.
+            sellers = sellers.OrderBy(s => s.Name)
+                .Take(count ?? int.MaxValue);
 
             // Convert to List.
             List<DSeller> sellersList = await sellers.ToListAsync<DSeller>();

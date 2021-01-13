@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TrakGud.API.Models;
 using TrakGud.DAL.Models;
 using TrakGud.DAL.Repos;
 
@@ -30,16 +31,34 @@ namespace TrakGud.API.Controllers
 
         // GET: api/DItemBatches/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<DItemBatch>> GetDItemBatch(int id)
+        public async Task<ActionResult<ApiDItemBatch>> GetDItemBatch(
+            int id,
+            string mode = null
+        )
         {
-            var dItemBatch = await _context.DItemBatches.FindAsync(id);
-
-            if (dItemBatch == null)
+            try
             {
-                return NotFound();
+                var dItemBatch = await _context.DItemBatches.FindAsync(id);
+
+                if (dItemBatch == null)
+                {
+                    return NotFound();
+                }
+
+                ApiDItemBatch resItemB = new ApiDItemBatch {
+                    ItemBatch = dItemBatch
+                };
+
+                // Todo: Complete the implementation!
+
+                return resItemB;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
 
-            return dItemBatch;
+            return NoContent();
         }
 
         // PUT: api/DItemBatches/5
