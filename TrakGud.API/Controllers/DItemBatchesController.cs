@@ -38,18 +38,66 @@ namespace TrakGud.API.Controllers
         {
             try
             {
-                var dItemBatch = await _context.DItemBatches.FindAsync(id);
-
-                if (dItemBatch == null)
+                DItemBatch dItemBatch = null;
+                if (mode != "add")
                 {
-                    return NotFound();
+                    dItemBatch = await _context.DItemBatches.FindAsync(id);
+
+                    if (dItemBatch == null)
+                    {
+                        return NotFound();
+                    }
                 }
 
-                ApiDItemBatch resItemB = new ApiDItemBatch {
+                ApiDItemBatch resItemB = new ApiDItemBatch
+                {
                     ItemBatch = dItemBatch
                 };
 
-                // Todo: Complete the implementation!
+                const string withText = "txt";
+                const string forEdit = "edit";
+                const string forAdd = "add";
+
+                switch (mode)
+                {
+                    case withText:
+                        // Add associated text fields.
+
+                        // Todo: Implement!
+
+                        break;
+
+                    case forEdit:
+                        // Add fields for Item-batch editing.
+
+                        resItemB.Products = _context.DProducts.Select(p => new DProduct
+                        {
+                            Id = p.Id,
+                            Name = p.Name
+                        }).ToList();
+
+                        resItemB.ItemBatchSourceTypes = _context.DItemBatchSourceTypes.Select(t => new DItemBatchSourceType
+                        {
+                            Value = t.Value,
+                            Text = t.Text
+                        }).ToList();
+
+                        break;
+                    case forAdd:
+                        resItemB.Products = _context.DProducts.Select(p => new DProduct
+                        {
+                            Id = p.Id,
+                            Name = p.Name
+                        }).ToList();
+
+                        resItemB.ItemBatchSourceTypes = _context.DItemBatchSourceTypes.Select(t => new DItemBatchSourceType
+                        {
+                            Value = t.Value,
+                            Text = t.Text
+                        }).ToList();
+
+                        break;
+                }
 
                 return resItemB;
             }

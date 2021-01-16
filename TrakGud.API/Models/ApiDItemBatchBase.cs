@@ -1,12 +1,14 @@
-﻿using TrakGud.DAL.Models;
+﻿using System.Collections.Generic;
+using TrakGud.DAL.Models;
 
 namespace TrakGud.API.Models
 {
     public class ApiDItemBatchBase
     {
-        public DItemBatchType ItemBatchType { get; set; }
-        public DItemBatchSourceType ItemBatchSourceType { get; set; }
-        public DProduct Product { get; set; }
-        public DProductUnit ProductUnit { get; set; }
+        public DItem ItemInfo { get; set; }
+        public DItemBatchType ItemBatchTypes { get; set; }
+        public List<DItemBatchSourceType> ItemBatchSourceTypes { get; set; }
+        public List<DProduct> Products { get; set; }
+        public List<DProductUnit> ProductUnits { get; set; }
     }
 }
